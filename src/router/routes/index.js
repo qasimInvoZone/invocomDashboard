@@ -4,18 +4,10 @@ import { lazy } from 'react'
 const TemplateTitle = '%s - Vuexy React Admin Template'
 
 // ** Default Route
-const DefaultRoute = '/home'
+const DefaultRoute = '/login'
 
 // ** Merge Routes
 const Routes = [
-  {
-    path: '/home',
-    component: lazy(() => import('../../views/Home'))
-  },
-  {
-    path: '/apps/chat',
-    component: lazy(() => import('../../views/apps/chat'))
-  },
   {
     path: '/login',
     component: lazy(() => import('../../views/Login')),
@@ -24,6 +16,15 @@ const Routes = [
       authRoute: true
     }
   },
+  {
+    path: '/home',
+    component: lazy(() => import('../../views/Home'))
+  },
+  {
+    path: '/apps/chat',
+    component: lazy(() => import('../../views/apps/chat'))
+  },
+  
   {
     path: '/register',
     component: lazy(() => import('../../views/Register')),

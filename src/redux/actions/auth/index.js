@@ -29,7 +29,7 @@ export const handleLogout = () => {
     dispatch({ type: 'LOGOUT', [config.storageTokenKeyName]: null, [config.storageRefreshTokenKeyName]: null })
 
     // ** Remove user, accessToken & refreshToken from localStorage
-    const login = async () => {
+    const logout = async () => {
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
       const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
       const entity = 'user'
@@ -47,6 +47,6 @@ export const handleLogout = () => {
       })
   
     }
-    login()
+    logout()
   }
 }
