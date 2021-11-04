@@ -69,7 +69,7 @@ const ForgotPassword = ({ history }) => {
                 <Label className='form-label email-wrapper' for='login-email'>
                   Email
                 </Label>
-                <Input type='email' id='login-email' placeholder='username@invozone.com' onChange={(e) => { setEmail(e.target.value) }} autoFocus />
+                <Input type='email' required id='login-email' placeholder='username@invozone.com' onChange={(e) => { setEmail(e.target.value) }} autoFocus />
               </FormGroup>
              
               <Button.Ripple tag={Link} color='info' block style={{height:"3rem",marginTop:"2rem"}} onClick={() => sendEmail()}>
