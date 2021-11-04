@@ -33,7 +33,7 @@ const ForgotPassword = ({ history }) => {
 
     
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
-    const apiVersion = REACT_APP_INVOCOM_API_VERSION
+    const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
     const entity = 'user'
     const endPoint = `${baseUrl}/${apiVersion}/${entity}/forgot`
 
