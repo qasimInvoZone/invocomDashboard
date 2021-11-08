@@ -4,6 +4,7 @@ import { RefreshCw, Delete, Smile, Send } from "react-feather"
 import { Button } from "bootstrap"
 import Modal from './ChatModal'
 import axios from 'axios'
+import Picker from 'emoji-picker-react';
 
 
 const ChatSection = ({ chat, sendMessageParent }) => {
