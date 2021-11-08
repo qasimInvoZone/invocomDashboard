@@ -12,6 +12,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   const [message, setMessage] = useState('')
   const [ showModal , setShowModal] = useState(false)
   const [admins, setAdmins] = useState([])
+  const [showEmoji, setShowEmoji] = useState(false)
   const [chosenEmoji, setChosenEmoji] = useState(null);
     console.log(showEmoji);
     const onEmojiClick = (event, emojiObject) => {
