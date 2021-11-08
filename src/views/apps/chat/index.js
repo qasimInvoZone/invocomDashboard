@@ -149,8 +149,8 @@ const AppChat = () => {
   async function sendMessage(chatId, message) {
     
     if (user && token) {
-      const baseUrl = REACT_APP_INVOCOM_API_URL
-      const apiVersion = REACT_APP_INVOCOM_API_VERSION
+      const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
+      const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
       const entity = 'chat'
       const endPoint = `${baseUrl}/${apiVersion}/${entity}/message`
       const options = {
