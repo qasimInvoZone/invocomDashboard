@@ -12,6 +12,13 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   const [message, setMessage] = useState('')
   const [ showModal , setShowModal] = useState(false)
   const [admins, setAdmins] = useState([])
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+    console.log(showEmoji);
+    const onEmojiClick = (event, emojiObject) => {
+        console.log(showEmoji.emoji);
+        setChosenEmoji(emojiObject);
+        console.log(chosenEmoji);
+    };
   useEffect(() => {
 
       const user = JSON.parse(localStorage.getItem('user'))
@@ -78,6 +85,13 @@ const ChatSection = ({ chat, sendMessageParent }) => {
       }
     }
   }
+  const handleKeyPress = (e) => {
+    console.log(e.key);
+    if (e.key === 'Enter') {
+        console.log('do validate');
+        sendMessage(chat._id)
+    }
+  }
   return (
     <>
     <div>
@@ -138,10 +152,20 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         </div>
         <div className="right-section-bottom">
           <input type="text" name="" placeholder="type a message..." 
-          onChange={(e) => setMessage(e.target.value)}/>
+          onChange={(e) => setMessage(e.target.value)} onKeyPress={(e) => handleKeyPress(e)}/>
             {chat.STATUS != "PENDING" ? (
+                
                 <div className="input_footer_emojis">
-                <Smile size={32} />
+                  {showEmoji ? (
+                  <div>
+                      <Picker onEmojiClick={onEmojiClick} /> 
+                  </div>
+                  ) : (
+                  <div>
+                    <Smile size={32} onClick={() => setShowEmoji(true)}/>
+                  </div>
+                  )
+              }
                 <button onClick={() => sendMessage(chat._id)}>
                   <p>Send</p>
                   <Send size={18} />
