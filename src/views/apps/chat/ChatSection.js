@@ -17,9 +17,11 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   const [chosenEmoji, setChosenEmoji] = useState(null);
     console.log(showEmoji);
     const onEmojiClick = (event, emojiObject) => {
-        console.log(showEmoji.emoji);
-        setChosenEmoji(emojiObject);
-        console.log(chosenEmoji);
+      console.log('emojis :::: ',emojiObject)
+      setChosenEmoji(emojiObject.emoji);
+      let tempString = message +' '+emojiObject.emoji;
+      setMessage(tempString)
+      console.log(message)
     };
   useEffect(() => {
 
@@ -160,7 +162,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                 <div className="input_footer_emojis">
                   {showEmoji ? (
                   <div>
-                      <Picker onEmojiClick={onEmojiClick} /> 
+                      <Picker onEmojiClick={(event, emojiObject)=>onEmojiClick(event, emojiObject)} /> 
                   </div>
                   ) : (
                   <div>
