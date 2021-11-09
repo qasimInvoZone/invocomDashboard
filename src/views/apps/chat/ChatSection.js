@@ -152,7 +152,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                 
                 <div className="input_footer_emojis">
                   {showEmoji ? (
-                  <div>
+                  <div className="emoji_picker">
                       <Picker onEmojiClick={(event, emojiObject)=>onEmojiClick(event, emojiObject)} /> 
                   </div>
                   ) : (

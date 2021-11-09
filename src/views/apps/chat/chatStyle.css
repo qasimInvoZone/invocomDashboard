@@ -465,8 +465,11 @@ opacity: 0;
     justify-content: space-between;
     align-items: center;
     width: 150px;
+    position :relative;
 }
-
+.emoji_picker{
+    position: absolute;
+}
 .all_conversations_options{
     display: flex;
     justify-content: space-between;
