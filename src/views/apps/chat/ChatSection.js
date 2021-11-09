@@ -23,11 +23,11 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   const [showEmoji, setShowEmoji] = useState(false)
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const avatars = [
-    {photo: {User1}},
-    {photo: {User1}},
-    {photo: {User1}},
-    {photo: {User1}},
-    {photo: {User1}}
+    {photo1: User1},
+    {photo2: User2},
+    {photo3: User3},
+    {photo4: User4},
+    {photo5: User5}
   ];
   console.log(avatars);
     const onEmojiClick = (event, emojiObject) => {
@@ -110,7 +110,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
       <div>
         <div className="headRight-sub">
           <div className="image_name_header">
-            <img src={User1} />
+            <img src={avatars.photo2} />
             <h3>
                 { 
                   user.role === 'SUPER_ADMIN' || user.role === 'ADMIN'  ? chat?.client?.username : chat?.superAdmin?.username 
