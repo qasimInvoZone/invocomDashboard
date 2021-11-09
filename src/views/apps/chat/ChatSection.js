@@ -6,6 +6,7 @@ import Modal from './ChatModal'
 import axios from 'axios'
 import Picker from 'emoji-picker-react';
 import { useHistory, useLocation } from 'react-router-dom';
+var moment = require('moment');
 
 const ChatSection = ({ chat, sendMessageParent }) => {
   const history = useHistory();
