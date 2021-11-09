@@ -148,7 +148,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         </div>
         <div className="right-section-bottom">
           <input type="text" name="" value={message} placeholder="type a message..." onClick={()=>{setShowEmoji(false)}} onChange={(e) => setMessage(e.target.value)} onKeyPress={(e) => handleKeyPress(e)}/>
-            {chat.STATUS != "PENDING" ? (
+            {isAssigned? (
                 
                 <div className="input_footer_emojis">
                   {showEmoji ? (
