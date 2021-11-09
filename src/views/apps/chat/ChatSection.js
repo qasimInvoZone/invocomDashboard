@@ -1,9 +1,5 @@
 import React, { useEffect, useState, useRef } from "react"
-import User1 from "../../../assets/images/avatars/12-small.png"
-import User2 from "../../../assets/images/avatars/11-small.png"
-import User3 from "../../../assets/images/avatars/10-small.png"
-import User4 from "../../../assets/images/avatars/9-small.png"
-import User5 from "../../../assets/images/avatars/8-small.png"
+import User1 from "../../../assets/images/avatars/demo_user.png"
 import { RefreshCw, Delete, Smile, Send } from "react-feather"
 import { Button } from "bootstrap"
 import Modal from './ChatModal'
@@ -22,14 +18,6 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   const [admins, setAdmins] = useState([])
   const [showEmoji, setShowEmoji] = useState(false)
   const [chosenEmoji, setChosenEmoji] = useState(null);
-  const avatars = [
-    {photo1: User1},
-    {photo2: User2},
-    {photo3: User3},
-    {photo4: User4},
-    {photo5: User5}
-  ];
-  console.log(avatars);
     const onEmojiClick = (event, emojiObject) => {
       setChosenEmoji(emojiObject.emoji);
       let tempString = message +' '+emojiObject.emoji;
@@ -110,7 +98,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
       <div>
         <div className="headRight-sub">
           <div className="image_name_header">
-            <img src={avatars.photo2} />
+            <img src={User1} />
             <h3>
                 { 
                   user.role === 'SUPER_ADMIN' || user.role === 'ADMIN'  ? chat?.client?.username : chat?.superAdmin?.username 
