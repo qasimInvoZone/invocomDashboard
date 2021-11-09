@@ -159,8 +159,8 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                  ''
                   )
               }
-               <div>
-                    <Smile size={32} onClick={() => setShowEmoji(true)}/>
+               <div  onClick={() => showEmoji? setShowEmoji(false): setShowEmoji(true)}>
+                    <Smile size={32}/>
                   </div>
                 <button className="footer_button_send" onClick={() => sendMessage(chat._id)}>
                   <p>Send</p>
