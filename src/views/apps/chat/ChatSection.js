@@ -49,6 +49,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         // eslint-disable-next-line no-undef
         setleadsData(response.data);
         if(response.status == 200){
+          console.log("location.pathname",location.pathname);
           history.push(location.pathname);
         }
       } catch (e) {
