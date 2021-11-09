@@ -126,7 +126,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                           }
                         </p>
                       </div>
-                      <small>{ message?.createdAt }</small>
+                      <small>{moment(message?.createdAt).format("hh:mm a")}</small>
                     </div>
                   </li> : <li className="msg-left">
               <div className="msg-left-sub">
@@ -137,7 +137,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                     }
                   </p>
                 </div>
-                <small>{ message.createdAt }</small>
+                <small>{moment(message?.createdAt).format("hh:mm a")}</small>
               </div>
             </li>
                 ))
