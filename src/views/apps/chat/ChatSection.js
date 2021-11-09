@@ -11,7 +11,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
 
   const [user, setUser] = useState({})
   const [message, setMessage] = useState('')
-  const [ showModal , setShowModal] = useState(false)
+  const [showModal , setShowModal] = useState(false)
   const [admins, setAdmins] = useState([])
   const [showEmoji, setShowEmoji] = useState(false)
   const [chosenEmoji, setChosenEmoji] = useState(null);
@@ -155,7 +155,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
           </ul>
         </div>
         <div className="right-section-bottom">
-          <input type="text" name="" placeholder="type a message..." 
+          <input type="text" name="" value={message} placeholder="type a message..." 
           onChange={(e) => setMessage(e.target.value)} onKeyPress={(e) => handleKeyPress(e)}/>
             {chat.STATUS != "PENDING" ? (
                 
