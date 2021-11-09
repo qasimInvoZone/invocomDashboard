@@ -156,12 +156,13 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                       <Picker onEmojiClick={(event, emojiObject)=>onEmojiClick(event, emojiObject)} /> 
                   </div>
                   ) : (
-                  <div>
-                    <Smile size={32} onClick={() => setShowEmoji(true)}/>
-                  </div>
+                 ''
                   )
               }
-                <button onClick={() => sendMessage(chat._id)}>
+               <div>
+                    <Smile size={32} onClick={() => setShowEmoji(true)}/>
+                  </div>
+                <button className="footer_button_send" onClick={() => sendMessage(chat._id)}>
                   <p>Send</p>
                   <Send size={18} />
                 </button>
