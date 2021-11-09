@@ -25,20 +25,16 @@ const ResetPassword = ({ history }) => {
   }
   
   const resetPassword = async () => {
-    console.log(newPassword);
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
             const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
             const entity = 'user'
             const endPoint = `${baseUrl}/${apiVersion}/${entity}/reset`
             try {
                 const response = await axios.post(endPoint, { passwordResetCode, newPassword })
-                console.log("response", response)
-                console.log(response.status)
                 if (response.status === 200) {
                   history.push('/login');
                 }
             } catch (e) {
-                console.log(e);
             }
   }
 

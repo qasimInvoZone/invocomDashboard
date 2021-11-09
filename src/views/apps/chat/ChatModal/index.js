@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, FormGroup, Input,UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
 import axios from 'axios'
+import { useHistory, useLocation } from 'react-router-dom';
 const ModalForm = (props) => {
   const [formModal, setFormModal] = useState(true)
   const [assignee, setAssignee] = useState({})
   const [isAssignee, setIsAssignee] = useState(false)
+  const history = useHistory();
+  const location = useLocation();
   const assignChat = async () => {
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
       const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
@@ -13,7 +16,7 @@ const ModalForm = (props) => {
       const token = localStorage.getItem('token');
       const adminId = assignee._id;
       const chatId = props.chatId;
-      console.log("admin, chat",adminId, chatId);
+
       try {
         const response = await axios.post(endPoint,{adminId,chatId},
         {
@@ -21,24 +24,23 @@ const ModalForm = (props) => {
             'Authorization': `Bearer ${token}`
           }
         })
-        console.log("rres", response);
+
         if(response.status == 200){
-          console.log("status",response.status);
+
           setIsAssignee(true);
           setFormModal(!formModal);
+          history.push(location.pathname);
         }
       } catch (e) {
-        console.log('CATCH', e.response);
+
         if (e && e?.response && e?.response?.status === 400) {
-          console.log(e.response.data)
+
         }
       }
     
   }
   const renderAdmins = (admins) => {
-    console.log("ADIMINSSSSSSS", admins)
     return admins.map((admin)=>{
-      console.log(admin);
       return <div>
       <Modal isOpen={formModal} toggle={() => setFormModal(!formModal)} className='modal-dialog-centered'>
         <ModalHeader toggle={() => setFormModal(!formModal)}></ModalHeader>

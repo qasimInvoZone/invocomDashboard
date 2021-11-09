@@ -53,7 +53,6 @@ export default function MeetCardSwiper(props) {
     // ]
   }
   const renderMeetingCards = (cards) => {
-    console.log(cards?.length)
     return cards?.map((card)=>{
       return <div>
         <Card className='card-developer-meetup'>

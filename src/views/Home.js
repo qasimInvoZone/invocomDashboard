@@ -43,7 +43,6 @@ const Home = () => {
             'Authorization': `Bearer ${token}`
           }
         })
-        console.log("dashboard",response.data)
         setleadsData(response.data);
       } catch (e) {
         if (e) {

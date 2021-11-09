@@ -38,12 +38,10 @@ const Leads = () => {
             'Authorization': `Bearer ${token}`
           }
         })
-        console.log("lead", response.data);
         setleadsData(response.data);
       } catch (e) {
-        console.log("in dashboard catch");
         if (e && e?.response && e?.response?.status === 400) {
-          console.log(e.response.data)
+          
         }
       }
     }

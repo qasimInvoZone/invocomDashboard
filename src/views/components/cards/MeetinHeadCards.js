@@ -8,7 +8,6 @@ import { ThemeColors } from '@src/utility/context/ThemeColors'
 
 const MeetingHeadCards = (props) => {
   const context = useContext(ThemeColors)
-  console.log("meeting props no of", props.meetingData)
   return (
     <Fragment>
       

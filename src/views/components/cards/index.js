@@ -29,7 +29,6 @@ const Cards = (props) => {
   //   };
   //   fetchLeadsData();
   // }, []);
-  console.log("in card",props);
   const context = useContext(ThemeColors)
 
   return (

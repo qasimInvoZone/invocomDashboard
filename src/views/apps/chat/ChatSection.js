@@ -5,23 +5,21 @@ import { Button } from "bootstrap"
 import Modal from './ChatModal'
 import axios from 'axios'
 import Picker from 'emoji-picker-react';
-
+import { useHistory, useLocation } from 'react-router-dom';
 
 const ChatSection = ({ chat, sendMessageParent }) => {
-
+  const history = useHistory();
+  const location = useLocation();
   const [user, setUser] = useState({})
   const [message, setMessage] = useState('')
   const [showModal , setShowModal] = useState(false)
   const [admins, setAdmins] = useState([])
   const [showEmoji, setShowEmoji] = useState(false)
   const [chosenEmoji, setChosenEmoji] = useState(null);
-    console.log(showEmoji);
     const onEmojiClick = (event, emojiObject) => {
-      console.log('emojis :::: ',emojiObject)
       setChosenEmoji(emojiObject.emoji);
       let tempString = message +' '+emojiObject.emoji;
       setMessage(tempString)
-      console.log(message)
     };
   useEffect(() => {
 
@@ -41,8 +39,6 @@ const ChatSection = ({ chat, sendMessageParent }) => {
       const entity = 'chat'
       const endPoint = `${baseUrl}/${apiVersion}/${entity}/assign`
       const token = localStorage.getItem('token');
-      console.log('token:',token );
-      console.log('chatId:',chatId );
       try {
         const response = await axios.post(endPoint,{chatId},
         {
@@ -50,15 +46,14 @@ const ChatSection = ({ chat, sendMessageParent }) => {
             'Authorization': `Bearer ${token}`
           }
         })
-        console.log("rres", response);
         // eslint-disable-next-line no-undef
         setleadsData(response.data);
         if(response.status == 200){
-          console.log(response);
+          history.push(location.pathname);
         }
       } catch (e) {
         if (e && e?.response && e?.response?.status === 400) {
-          console.log(e.response.data)
+
         }
       }
 
@@ -77,22 +72,17 @@ const ChatSection = ({ chat, sendMessageParent }) => {
           'Authorization': `Bearer ${token}`
         }
       })
-      console.log("adminnnnnnnssssssss", response.data);
       setAdmins(response.data.adminUsers);
       if(response.status == 200){
         setShowModal(!showModal);
       }
     } catch (e) {
-      console.log("CATCH");
       if (e && e?.response && e?.response?.status === 400) {
-        console.log(e.response.data)
       }
     }
   }
   const handleKeyPress = (e) => {
-    console.log(e.key);
     if (e.key === 'Enter') {
-        console.log('do validate');
         sendMessage(chat._id)
     }
   }

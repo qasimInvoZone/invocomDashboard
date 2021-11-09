@@ -32,13 +32,9 @@ const LiveChat = () => {
                       Authorization: `Bearer ${token}`
                     }
                 })
-                console.log("response", response)
-                console.log(response.status)
                 if (response.status === 200) {
-                    console.log("setting sent")
                 }
             } catch (e) {
-                console.log(e);
             }
     }
     return (

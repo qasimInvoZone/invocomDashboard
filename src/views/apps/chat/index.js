@@ -125,15 +125,12 @@ const AppChat = () => {
             }
           }
         try {
-          console.log("try1");
           const response = await axios.post(endPoint,{chatId}, options)
-          console.log("try2");
           if (response.status === 200) {
-            console.log("updated unread messages");
+
           } 
       } catch (e) {
-        console.log("Catch");
-        console.log(e.response);
+
       }
         }
         setData(prevData => {

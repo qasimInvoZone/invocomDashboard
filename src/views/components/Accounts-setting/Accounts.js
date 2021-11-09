@@ -8,7 +8,6 @@ import Button from 'reactstrap/lib/Button'
 import axios from 'axios'
 const Accounts = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user.fullname,user.email);
     const [fullname, setFullname] = useState(user.fullname)
     const [email, setEmail] = useState(user.email)
     const [password, setPassword] = useState('')
@@ -26,10 +25,8 @@ const Accounts = () => {
                 }
             })
             if (response.status === 200) {
-                console.log('Updated');
             }
         } catch (e) {
-            console.log(e);
         }
     }
     return (

@@ -23,7 +23,6 @@ const Admin = () => {
     useEffect(() => {
       const fetchAdmins = async () => {
         const token = localStorage.getItem('token');
-        console.log("token", token)
         const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
         const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
         const entity = 'user'
@@ -34,10 +33,8 @@ const Admin = () => {
               Authorization: `Bearer ${token}`
             }
           });
-          console.log("response", response.data.adminUsers);
           setAdmins(response.data.adminUsers);
         } catch (e) {
-            console.log(e);
         }
       }
       fetchAdmins()
@@ -51,10 +48,7 @@ const Admin = () => {
     
     //POST /api/v1/user/register/admin username,fullname,password,role=ADMIN, email
     const registerAdmin = async () => {
-      
-      const token = localStorage.getItem('token');
-      console.log("body : ", email,fullname,username,password, token)
-      
+      const token = localStorage.getItem('token');      
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
             const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
             const entity = 'user'
@@ -66,15 +60,14 @@ const Admin = () => {
                     Authorization: `Bearer ${token}`
                   }
                 })
-                console.log("response", response)
-                console.log(response.status)
+
                 if (response.status === 200) {
                   setAdmins(prevAdmins => {
                     return [...prevAdmins, {username: response.data.data.user.username, email: response.data.data.user.email, _id: response.data.data.user._id}]
                   });
                 }
             } catch (e) {
-                console.log(e);
+
             }
     }
     const renderAdmin = () =>{
@@ -96,10 +89,7 @@ const Admin = () => {
       })
     }
     const removeAdmin = async (adminEmail) => {
-      console.log(removeEmail);
       const token = localStorage.getItem('token');
-      console.log("body : ", email,fullname,username,password, token)
-      
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
             const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
             const entity = 'user'
@@ -111,8 +101,6 @@ const Admin = () => {
                     Authorization: `Bearer ${token}`
                   }
                 })
-                console.log("response", response)
-                console.log(response.status)
                 if (response.status === 200) {
                   setAdmins(prevAdmins => {
                     return prevAdmins.filter(admin => {
@@ -121,7 +109,6 @@ const Admin = () => {
                   });
                 }
             } catch (e) {
-                console.log(e);
             }
     }
 

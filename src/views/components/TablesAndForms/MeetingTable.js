@@ -90,9 +90,7 @@ const avatarGroupData4 = [
 ]
 
 const MeetTable = (props) => {
-  console.log("meeting table props",props?.meetingList)
   const renderMeetings = (meetings) => {
-    console.log("meeting table map",props?.meetingList)
     return meetings?.map((meeting)=>{
       return <tr>
       <td>

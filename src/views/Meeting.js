@@ -39,18 +39,14 @@ const Meeting = () => {
             'Authorization': `Bearer ${token}`
           }
         })
-        console.log("lead", response.data);
         setMeetingData(response.data);
       } catch (e) {
-        console.log("in dashboard catch");
         if (e && e?.response && e?.response?.status === 400) {
-          console.log(e.response.data)
         }
       }
     }
     fetchMeetings()
   }, [axios, setMeetingData])
-  console.log("meeting data : ",meetingData);
   return (
     <div className="p-2 bg-white mt-1" >
     
