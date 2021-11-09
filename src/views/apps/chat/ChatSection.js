@@ -7,7 +7,7 @@ import axios from 'axios'
 import Picker from 'emoji-picker-react';
 import { useHistory, useLocation } from 'react-router-dom';
 var moment = require('moment');
-
+//dummy
 const ChatSection = ({ chat, sendMessageParent }) => {
   const history = useHistory();
   const location = useLocation();
