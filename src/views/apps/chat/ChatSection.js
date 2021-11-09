@@ -52,7 +52,6 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         setleadsData(response.data);
         if(response.status == 200){
           setIsAssigned(true);
-          console.log('isAssigned', isAssigned)
         }
       } catch (e) {
         if (e && e?.response && e?.response?.status === 400) {
@@ -149,7 +148,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         </div>
         <div className="right-section-bottom">
           <input type="text" name="" value={message} placeholder="type a message..." onClick={()=>{setShowEmoji(false)}} onChange={(e) => setMessage(e.target.value)} onKeyPress={(e) => handleKeyPress(e)}/>
-            {chat.STATUS != "PENDING" && isAssigned ? (
+            {chat.STATUS != "PENDING" ? (
                 
                 <div className="input_footer_emojis">
                   {showEmoji ? (
