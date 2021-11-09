@@ -52,6 +52,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         setleadsData(response.data);
         if(response.status == 200){
           setIsAssigned(true);
+          console.log('isAssigned', isAssigned)
         }
       } catch (e) {
         if (e && e?.response && e?.response?.status === 400) {
