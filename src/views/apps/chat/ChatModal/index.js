@@ -29,7 +29,7 @@ const ModalForm = (props) => {
 
           setIsAssignee(true);
           setFormModal(!formModal);
-          history.push(location.pathname);
+          window.location.reload();
         }
       } catch (e) {
 
