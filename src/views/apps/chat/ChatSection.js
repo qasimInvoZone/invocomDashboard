@@ -12,6 +12,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   const history = useHistory();
   const location = useLocation();
   const [user, setUser] = useState({})
+  const [isAssigned, setIsAssigned] = useState(false)
   const [message, setMessage] = useState('')
   const [showModal , setShowModal] = useState(false)
   const [admins, setAdmins] = useState([])
@@ -50,8 +51,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         // eslint-disable-next-line no-undef
         setleadsData(response.data);
         if(response.status == 200){
-          console.log("location.pathname",location.pathname);
-          history.push(location.pathname);
+          setIsAssigned(true);
         }
       } catch (e) {
         if (e && e?.response && e?.response?.status === 400) {
