@@ -469,7 +469,11 @@ opacity: 0;
 }
 .emoji_picker{
     position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-110%);
 }
+
 .all_conversations_options{
     display: flex;
     justify-content: space-between;
