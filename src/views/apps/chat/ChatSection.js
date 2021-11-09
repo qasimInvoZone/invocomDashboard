@@ -1,5 +1,9 @@
 import React, { useEffect, useState, useRef } from "react"
 import User1 from "../../../assets/images/avatars/12-small.png"
+import User2 from "../../../assets/images/avatars/11-small.png"
+import User3 from "../../../assets/images/avatars/10-small.png"
+import User4 from "../../../assets/images/avatars/9-small.png"
+import User5 from "../../../assets/images/avatars/8-small.png"
 import { RefreshCw, Delete, Smile, Send } from "react-feather"
 import { Button } from "bootstrap"
 import Modal from './ChatModal'
@@ -18,6 +22,14 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   const [admins, setAdmins] = useState([])
   const [showEmoji, setShowEmoji] = useState(false)
   const [chosenEmoji, setChosenEmoji] = useState(null);
+  const avatars = [
+    {photo: {User1}},
+    {photo: {User1}},
+    {photo: {User1}},
+    {photo: {User1}},
+    {photo: {User1}}
+  ];
+  console.log(avatars);
     const onEmojiClick = (event, emojiObject) => {
       setChosenEmoji(emojiObject.emoji);
       let tempString = message +' '+emojiObject.emoji;
