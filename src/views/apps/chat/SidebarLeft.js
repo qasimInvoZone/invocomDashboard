@@ -1,5 +1,5 @@
 // ** React Imports
-import User1 from '../../../assets/images/avatars/12-small.png'
+import User1 from '../../../assets/images/avatars/demo_user.png'
 import User2 from '../../../assets/images/avatars/3-small.png'
 import User3 from '../../../assets/images/avatars/10-small.png'
 import { useEffect, useState } from 'react'
