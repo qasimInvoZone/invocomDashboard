@@ -1,6 +1,6 @@
 // ** React Imports
 import { forwardRef } from 'react'
-
+import User1 from '../../../assets/images/avatars/demo_user.png'
 // ** Third Party Components
 import Proptypes from 'prop-types'
 import { Badge } from 'reactstrap'
@@ -69,7 +69,7 @@ const Avatar = forwardRef((props, ref) => {
           className={classnames({
             [imgClassName]: imgClassName
           })}
-          src={img}
+          src={User1}
           alt='avatarImg'
           height={imgHeight && !size ? imgHeight : 32}
           width={imgWidth && !size ? imgWidth : 32}
