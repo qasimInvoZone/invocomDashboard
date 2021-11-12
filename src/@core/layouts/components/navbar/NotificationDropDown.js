@@ -58,7 +58,7 @@ const NotificationDropdown = () => {
           {notifications?.length > 0 && notifications.map((item, index) => {
             console.log("item,index",item,index);
           return (
-            <Link key={index} className='d-flex' to = {item.type == 'MESSAGE' ? '/apps/chat': '/meetings'}>
+            <Link key={index} className='d-flex' onClick={() => removeNotification(index)} to = {item.type == 'MESSAGE' ? '/apps/chat': '/meetings'}>
               <Media
                 className={classnames('d-flex', {
                   'align-items-start': !item.switch,
@@ -82,6 +82,15 @@ const NotificationDropdown = () => {
     )
   }
   /*eslint-enable */
+  const removeNotification = (index) => {
+    // delete element of index 
+    if (index > -1) {
+      const notificationArray = notifications;
+      notificationArray.splice(index, 1);
+      setNotifications(notificationArray);
+      setNotificationCount(notificationCount-1);
+    }
+  }
 
   return (
     <UncontrolledDropdown tag='li' className='dropdown-notification nav-item mr-25'>
