@@ -10,6 +10,7 @@ var moment = require('moment');
 //dummy
 
 const ChatSection = ({ chat, sendMessageParent }) => {
+  const messagesEndRef = useRef(null)
   const history = useHistory();
   const location = useLocation();
   const [user, setUser] = useState({})
@@ -28,6 +29,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
 
       const user = JSON.parse(localStorage.getItem('user'))
       setUser(user)
+      scrollToBottom();
   }, [setUser])
 
   function sendMessage(chat_id) {
@@ -87,6 +89,9 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         sendMessage(chat._id)
     }
   }
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
   return (
     <>
     <div>
@@ -144,6 +149,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
             }
             
           </ul>
+          <div ref={messagesEndRef} />
         </div>
         <div className="right-section-bottom">
           <input type="text" name="" value={message} placeholder="type a message..." onClick={()=>{setShowEmoji(false)}} onChange={(e) => setMessage(e.target.value)} onKeyPress={(e) => handleKeyPress(e)}/>

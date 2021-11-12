@@ -281,8 +281,8 @@ align-items: center;
     word-break: break-all !important;
 }
 .message ul li.msg-left small{
-/* position: absolute; */
-bottom: -3px;
+position: absolute;
+bottom: -10px;
 left: 2%;
 color: #c1c1c1;
 }
