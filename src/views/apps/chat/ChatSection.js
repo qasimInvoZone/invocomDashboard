@@ -52,10 +52,13 @@ const ChatSection = ({ chat, sendMessageParent }) => {
           }
         })
         console.log("before",isAssigned)
+        console.log("response.status",response.status)
         if(response.status == 200){
+          console.log("Middle if",isAssigned, response.status)
           setIsAssigned(true);
         }
         console.log("afterrrr :::: ",isAssigned)
+        
         // eslint-disable-next-line no-undef
         
       } catch (e) {
