@@ -54,7 +54,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         // eslint-disable-next-line no-undef
         console.log("before",isAssigned)
         setIsAssigned(true);
-        console.log("after",isAssigned)
+        console.log("afterrrr :::: ",isAssigned)
       } catch (e) {
       }
 
