@@ -53,11 +53,9 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         })
         // eslint-disable-next-line no-undef
         console.log("before",isAssigned)
-        setleadsData(response.data);
         setIsAssigned(true);
         console.log("after",isAssigned)
       } catch (e) {
-        console.log("yakki",e);
       }
 
   }
