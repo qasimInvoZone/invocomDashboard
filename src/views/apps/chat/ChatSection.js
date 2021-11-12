@@ -154,7 +154,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         </div>
         <div className="right-section-bottom">
           <input type="text" name="" value={message} placeholder="type a message..." onClick={()=>{setShowEmoji(false)}} onChange={(e) => setMessage(e.target.value)} onKeyPress={(e) => handleKeyPress(e)}/>
-            {chat.STATUS != "PENDING" ? (
+            {isAssigned? (
                 
                 <div className="input_footer_emojis">
                   {showEmoji ? (
@@ -173,7 +173,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                   <Send size={18} />
                 </button>
               </div>
-              ) : isAssigned? '':( <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
+              ) : ( <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
               <div>This conversation is not assigned to you. In order to write a message, click "join" or "assign"</div>
               <div className="right-section-bottom-restrict-buttons">
                 <div className="right-section-bottom-restrict-buttons-join" onClick={() => {joinChat(chat._id)}}><strong>Join</strong></div >
