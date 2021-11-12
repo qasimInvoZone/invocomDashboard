@@ -176,13 +176,13 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                   <Send size={18} />
                 </button>
               </div>
-              ) : ( <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
+              ) : isAssigned? ( <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
               <div>This conversation is not assigned to you. In order to write a message, click "join" or "assign"</div>
               <div className="right-section-bottom-restrict-buttons">
                 <div className="right-section-bottom-restrict-buttons-join" onClick={() => {joinChat(chat._id)}}><strong>Join</strong></div >
                 <div className="right-section-bottom-restrict-buttons-join" onClick={() => fetchAdmins()}><strong>Assign</strong></div>
               </div>
-            </div>)}
+            </div>) : ''}
           
         </div>
         </div>
