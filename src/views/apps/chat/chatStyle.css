@@ -283,7 +283,7 @@ align-items: center;
 .message ul li.msg-left small{
 /* position: absolute; */
 bottom: -3px;
-left: 70px;
+left: 2%;
 color: #c1c1c1;
 }
 .message ul li.msg-right{
@@ -318,7 +318,7 @@ bottom: 0px;
 color: #c1c1c1;
 position: absolute;
 bottom: -10px;
-right: 0;
+right: 2%;
 width: max-content !important;
 }
 .message ul li.msg-day{
