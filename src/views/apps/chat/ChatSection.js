@@ -6,6 +6,7 @@ import Modal from './ChatModal'
 import axios from 'axios'
 import Picker from 'emoji-picker-react';
 import { useHistory, useLocation, Link } from 'react-router-dom';
+import { TRUE } from "node-sass"
 var moment = require('moment');
 //dummy
 
@@ -51,10 +52,13 @@ const ChatSection = ({ chat, sendMessageParent }) => {
             'Authorization': `Bearer ${token}`
           }
         })
-        // eslint-disable-next-line no-undef
         console.log("before",isAssigned)
-        setIsAssigned(!isAssigned);
+        if(response.status == 200){
+          setIsAssigned(true);
+        }
         console.log("afterrrr :::: ",isAssigned)
+        // eslint-disable-next-line no-undef
+        
       } catch (e) {
       }
 
