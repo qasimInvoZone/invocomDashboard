@@ -175,7 +175,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
               ) : ( <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
               <div>This conversation is not assigned to you. In order to write a message, click "join" or "assign"</div>
               <div className="right-section-bottom-restrict-buttons">
-                <div className="right-section-bottom-restrict-buttons-join" onClick={() => {joinChat(chat._id); window.location.reload();}}><strong>Join</strong></div>
+                <div className="right-section-bottom-restrict-buttons-join" onClick={() => {joinChat(chat._id); history.push('/apps/chat')}}><strong>Join</strong></div>
                 <div className="right-section-bottom-restrict-buttons-join" onClick={() => fetchAdmins()}><strong>Assign</strong></div>
               </div>
             </div>)}
