@@ -83,7 +83,7 @@ const NotificationDropdown = () => {
     )
   }
   /*eslint-enable */
-  const removeNotification = (index) => {
+  const removeNotification = (index,item) => {
     // delete element of index 
     if (index > -1) {
       const notificationArray = notifications;
