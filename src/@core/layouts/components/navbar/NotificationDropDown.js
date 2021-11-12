@@ -1,6 +1,6 @@
 // ** React Imports
 import { Fragment, useState, useEffect, useContext, useRef } from 'react'
-import {Link} from 'react-router-dom'
+import {useHistory, Link} from 'react-router-dom'
 
 // ** Custom Components
 import Avatar from '@components/avatar'
@@ -23,6 +23,7 @@ import { SocketContext } from '../../../../service/socket'
 import { USERWHITESPACABLE_TYPES } from '@babel/types'
 
 const NotificationDropdown = () => {
+  const history = useHistory();
   // ** Notification Array
   const socket = useContext(SocketContext);
   const [notifications, setNotifications] = useState([])
@@ -58,7 +59,7 @@ const NotificationDropdown = () => {
           {notifications?.length > 0 && notifications.map((item, index) => {
             console.log("item,index",item,index);
           return (
-            <Link key={index} className='d-flex' onClick={() => removeNotification(index)} to = {item.type == 'MESSAGE' ? '/apps/chat': '/meetings'}>
+            <div key={index} className='d-flex' onClick={() => removeNotification(index,item)}>
               <Media
                 className={classnames('d-flex', {
                   'align-items-start': !item.switch,
@@ -73,7 +74,7 @@ const NotificationDropdown = () => {
                 </Media>
               </Fragment>
               </Media>
-            </Link>
+            </div>
           )
         })}
         </div>
@@ -89,6 +90,7 @@ const NotificationDropdown = () => {
       notificationArray.splice(index, 1);
       setNotifications(notificationArray);
       setNotificationCount(notificationCount-1);
+      item.type == 'MESSAGE' ? history.push('/apps/chat'): history.push('/meetings');
     }
   }
 
