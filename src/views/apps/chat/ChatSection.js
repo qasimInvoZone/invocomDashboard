@@ -30,7 +30,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
       const user = JSON.parse(localStorage.getItem('user'))
       setUser(user)
       scrollToBottom();
-  }, [setUser,isAssigned])
+  }, [setUser,isAssigned,message])
 
   function sendMessage(chat_id) {
     if (message !== '') {
