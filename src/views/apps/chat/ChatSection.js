@@ -52,9 +52,10 @@ const ChatSection = ({ chat, sendMessageParent }) => {
           }
         })
         // eslint-disable-next-line no-undef
-
+        console.log("before",isAssigned)
         setleadsData(response.data);
         setIsAssigned(true);
+        console.log("after",isAssigned)
       } catch (e) {
         if (e && e?.response && e?.response?.status === 400) {
 
@@ -154,7 +155,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         </div>
         <div className="right-section-bottom">
           <input type="text" name="" value={message} placeholder="type a message..." onClick={()=>{setShowEmoji(false)}} onChange={(e) => setMessage(e.target.value)} onKeyPress={(e) => handleKeyPress(e)}/>
-            {isAssigned? (
+            {chat.STATUS == "PENDING"? (
                 
                 <div className="input_footer_emojis">
                   {showEmoji ? (
