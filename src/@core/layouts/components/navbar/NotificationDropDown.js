@@ -56,6 +56,7 @@ const NotificationDropdown = () => {
       >
         <div>
           {notifications?.length > 0 && notifications.map((item, index) => {
+            console.log("item,index",item,index);
           return (
             <Link key={index} className='d-flex' to = {item.type == 'MESSAGE' ? '/apps/chat': '/meetings'}>
               <Media
