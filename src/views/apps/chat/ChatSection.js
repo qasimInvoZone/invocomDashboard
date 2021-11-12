@@ -6,7 +6,6 @@ import Modal from './ChatModal'
 import axios from 'axios'
 import Picker from 'emoji-picker-react';
 import { useHistory, useLocation, Link } from 'react-router-dom';
-import { TRUE } from "node-sass"
 var moment = require('moment');
 //dummy
 
