@@ -30,7 +30,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
       const user = JSON.parse(localStorage.getItem('user'))
       setUser(user)
       scrollToBottom();
-  }, [setUser,isAssigned])
+  }, [setUser])
 
   function sendMessage(chat_id) {
     if (message !== '') {
@@ -173,7 +173,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                   <Send size={18} />
                 </button>
               </div>
-              ) : ( <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
+              ) : isAssigned? '':( <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
               <div>This conversation is not assigned to you. In order to write a message, click "join" or "assign"</div>
               <div className="right-section-bottom-restrict-buttons">
                 <div className="right-section-bottom-restrict-buttons-join" onClick={() => {joinChat(chat._id)}}><strong>Join</strong></div >
