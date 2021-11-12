@@ -102,7 +102,7 @@ const NotificationDropdown = () => {
         {renderNotificationItems()}
         <li className='dropdown-menu-footer'>
           <Button.Ripple color='primary' block onClick={()=>{setNotificationCount(0); setNotifications([])}}>
-            Read all notifications
+            Mark Read All Notifications
           </Button.Ripple>
         </li>
       </DropdownMenu>
