@@ -44,6 +44,7 @@ const Home = () => {
           }
         })
         setleadsData(response.data);
+        console.log('leadsData', leadsData);
       } catch (e) {
         if (e) {
           //
