@@ -30,7 +30,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
       const user = JSON.parse(localStorage.getItem('user'))
       setUser(user)
       scrollToBottom();
-  }, [setUser])
+  }, [setUser,isAssigned])
 
   function sendMessage(chat_id) {
     if (message !== '') {
@@ -52,9 +52,9 @@ const ChatSection = ({ chat, sendMessageParent }) => {
           }
         })
         // eslint-disable-next-line no-undef
+
         setleadsData(response.data);
         setIsAssigned(true);
-        history.push('/apps/chat');
       } catch (e) {
         if (e && e?.response && e?.response?.status === 400) {
 
