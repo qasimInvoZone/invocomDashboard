@@ -60,7 +60,7 @@ const Home = () => {
       setRole(user.role)
     }
 
-  }, [axios, setleadsData])
+  }, [axios, leadsData])
 
   return (
     <div>
