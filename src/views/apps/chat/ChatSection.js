@@ -57,9 +57,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         setIsAssigned(true);
         console.log("after",isAssigned)
       } catch (e) {
-        if (e && e?.response && e?.response?.status === 400) {
-
-        }
+        console.log("yakki",e);
       }
 
   }
