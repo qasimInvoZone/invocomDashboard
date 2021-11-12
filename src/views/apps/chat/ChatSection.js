@@ -99,7 +99,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
     <div>
     {showModal ? (
           <Modal admins={admins} chatId={chat._id}/>
-        ) : ('Create Modal for 0 Admis')}
+        ) : ('')}
     </div>
 
     <div className="complete_right_side">
@@ -155,7 +155,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         </div>
         <div className="right-section-bottom">
           <input type="text" name="" value={message} placeholder="type a message..." onClick={()=>{setShowEmoji(false)}} onChange={(e) => setMessage(e.target.value)} onKeyPress={(e) => handleKeyPress(e)}/>
-            {chat.STATUS == "PENDING"? (
+            {chat.STATUS != "PENDING"? (
                 
                 <div className="input_footer_emojis">
                   {showEmoji ? (
