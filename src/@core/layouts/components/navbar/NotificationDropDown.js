@@ -1,5 +1,6 @@
 // ** React Imports
 import { Fragment, useState, useEffect, useContext, useRef } from 'react'
+import {Link} from 'react-router-dom'
 
 // ** Custom Components
 import Avatar from '@components/avatar'
@@ -56,7 +57,7 @@ const NotificationDropdown = () => {
         <div>
           {notifications?.length > 0 && notifications.map((item, index) => {
           return (
-            <a key={index} className='d-flex' href={item.type == 'MESSAGE' ? '/apps/chat': '/meetings'}>
+            <Link key={index} className='d-flex' to = {item.type == 'MESSAGE' ? '/apps/chat': '/meetings'}>
               <Media
                 className={classnames('d-flex', {
                   'align-items-start': !item.switch,
@@ -71,7 +72,7 @@ const NotificationDropdown = () => {
                 </Media>
               </Fragment>
               </Media>
-            </a>
+            </Link>
           )
         })}
         </div>
@@ -83,7 +84,7 @@ const NotificationDropdown = () => {
 
   return (
     <UncontrolledDropdown tag='li' className='dropdown-notification nav-item mr-25'>
-      <DropdownToggle tag='a' className='nav-link' href='/' onClick={e => e.preventDefault()}>
+      <DropdownToggle tag='a' className='nav-link' onClick={e => e.preventDefault()}>
         <div className="header_icons">
         <img src={Notification} alt=""/>
         <Badge pill color='danger' className='badge-up'>

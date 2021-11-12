@@ -14,7 +14,7 @@ import FilterSideBar from './ChatDropDowns/filterSideBar'
 const SidebarLeft = ({ renderChatParent, chats }) => {
 
   const [user, setUser] = useState({})
-  
+  const [search, setSearch] = useState('')
   useEffect(async () => {
     const user = JSON.parse(localStorage.getItem('user'))
     const token = localStorage.getItem('token')
@@ -33,7 +33,7 @@ const SidebarLeft = ({ renderChatParent, chats }) => {
     <div className="headLeft-section">
       <div className="headLeft-sub">
         <Search className="search_icon_chat" />
-        <input type="text" name="search" placeholder="Search..." />
+        <input type="text" name="search" placeholder="Search..." onChange={(e) => setSearch(e.target.value)}/>
         
         <p>
           Recent
