@@ -97,7 +97,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
     <div>
     {showModal ? (
           <Modal admins={admins} chatId={chat._id}/>
-        ) : ('')}
+        ) : ('Create Modal for 0 Admis')}
     </div>
 
     <div className="complete_right_side">
