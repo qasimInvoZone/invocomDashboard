@@ -27,8 +27,6 @@ const Home = () => {
     })
 
   }, [socket, setOnlineUser])
-
-  //fetch token from localStorage
   useEffect(() => {
 
     const fetchDashboard = async () => {
