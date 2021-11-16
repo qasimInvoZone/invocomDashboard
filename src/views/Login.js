@@ -33,7 +33,7 @@ const Login = ({ history }) => {
       localStorage.setItem('user', JSON.stringify(response.data.data.user)) 
       history.push('/home')
     }).catch(err => {
-      setError(err.response.data.message)
+      setError(err?.response?.data?.message)
       setHasError(true)
     })
 
@@ -92,3 +92,4 @@ const Login = ({ history }) => {
 }
 
 export default Login
+
