@@ -116,8 +116,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
             </h3>
           </div>
           <div className="chat_head_right_icons">
-            <RefreshCw size={16} />
-            <Delete size={16} />
+
           </div>
         </div>
       </div>

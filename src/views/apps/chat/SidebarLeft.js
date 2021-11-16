@@ -34,11 +34,6 @@ const SidebarLeft = ({ renderChatParent, chats }) => {
       <div className="headLeft-sub">
         <Search className="search_icon_chat" />
         <input type="text" name="search" placeholder="Search..." onChange={(e) => setSearch(e.target.value)}/>
-        
-        <p>
-          Recent
-        </p>
-        <img src={Arrow} />
       </div>
     </div>
         <ul>
