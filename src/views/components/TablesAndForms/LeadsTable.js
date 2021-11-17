@@ -99,7 +99,7 @@ const TableHover = (props) => {
     if(status == "OPEN"){
       result = leadsData;
     } else {
-      result = leadsData.filter(leadStatus => leadStatus === status);
+      result = leadsData.filter(leadStatus => leadStatus.STATUS == status);
     }
     return result?.map((lead)=>{
       return <tr>
