@@ -6,6 +6,7 @@ import { MoreVertical, Edit, Trash } from 'react-feather'
 import { Table, Badge, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
 var moment = require('moment');
 moment().format();
+
 const avatarGroupData1 = [
   {
     title: 'Griffith',
@@ -105,7 +106,7 @@ const MeetTable = (props) => {
       {meeting.summary.assignee.fullname}
       </td>
       <td>
-        <p style={{fontWeight: 'bold'}}>{moment(meeting.createdAt).toString()}</p>
+        <p style={{fontWeight: 'bold'}}>{moment(meeting.startDate).toString()}</p>
         <p style={{color: 'gray'}}></p>
       
       </td>
