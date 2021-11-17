@@ -4,7 +4,8 @@ import avatar2 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
 import avatar3 from '@src/assets/images/portrait/small/avatar-s-7.jpg'
 import { MoreVertical, Edit, Trash } from 'react-feather'
 import { Table, Badge, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
-
+var moment = require('moment');
+moment().format();
 const avatarGroupData1 = [
   {
     title: 'Griffith',
