@@ -109,11 +109,7 @@ const TableHover = (props) => {
         <p style={{color: 'gray'}}></p>
       
       </td>
-      <td>
-        <p style={{fontWeight: 'bold'}}>{moment(lead.meeting.startDate).toString()}</p>
-        <p style={{color: 'gray'}}></p>
-      
-      </td>
+
       <td>
       {
           lead.STATUS === "ASSIGNED" ? (
@@ -167,7 +163,6 @@ const TableHover = (props) => {
           <th>Email</th>
           <th>Assignee</th>
           <th>Meeting</th>
-          <th>Date</th>
           <th>Status</th>
         </tr>
       </thead>

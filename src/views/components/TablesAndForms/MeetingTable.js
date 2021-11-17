@@ -104,8 +104,8 @@ const MeetTable = (props) => {
       {meeting.summary.assignee.fullname}
       </td>
       <td>
-        <p style={{fontWeight: 'bold'}}>11/10/2020</p>
-        <p style={{color: 'gray'}}>11:00 AM</p>
+        <p style={{fontWeight: 'bold'}}>{moment(meeting.createdAt).toString()}</p>
+        <p style={{color: 'gray'}}></p>
       
       </td>
       <td>
