@@ -106,7 +106,7 @@ const TableHover = (props) => {
       {lead.assignee.fullname}
       </td>
       <td>
-        <p style={{fontWeight: 'bold'}}>{moment(lead.createdAt).toString()}</p>
+        <p style={{fontWeight: 'bold'}}>{moment(lead.meeting.startDate).toString()}</p>
         <p style={{color: 'gray'}}></p>
       
       </td>
