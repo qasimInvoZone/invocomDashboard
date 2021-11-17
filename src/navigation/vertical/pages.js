@@ -46,7 +46,7 @@ export default [
       // },
       {
         id: 'Setting',
-        title: 'Setting',
+        title: 'Settings',
         icon: <img  src={settings} style={{marginRight: '15px'}}/>,
         permissions: ['admin', 'editor'],
         navLink: '/setting'

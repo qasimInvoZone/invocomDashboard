@@ -41,7 +41,7 @@ export default [
       },
       {
         id: 'Setting',
-        title: 'Setting',
+        title: 'Settings',
         icon: <Settings size={12} color={'grey'}/>,
         permissions: ['admin', 'editor'],
         navLink: '/setting'
