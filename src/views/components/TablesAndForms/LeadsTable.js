@@ -92,6 +92,7 @@ const avatarGroupData4 = [
 
 const TableHover = (props) => {
   const renderSummary = (leadsData) => {
+    console.log("leads Data ::::::: ",leadsData);
     return leadsData?.map((lead)=>{
       return <tr>
       <td>
