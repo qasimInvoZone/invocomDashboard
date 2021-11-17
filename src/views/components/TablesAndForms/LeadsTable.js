@@ -4,6 +4,7 @@ import avatar2 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
 import avatar3 from '@src/assets/images/portrait/small/avatar-s-7.jpg'
 import { MoreVertical, Edit, Trash } from 'react-feather'
 import { Table, Badge, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import React, { useState } from 'react'
 var moment = require('moment');
 moment().format();
 const avatarGroupData1 = [
@@ -91,9 +92,16 @@ const avatarGroupData4 = [
 ]
 
 const TableHover = (props) => {
+  const [status, setStatus] = useState('OPEN');
   const renderSummary = (leadsData) => {
     console.log("leads Data ::::::: ",leadsData);
-    return leadsData?.map((lead)=>{
+    let result = leadsData;
+    if(status == "OPEN"){
+      result = leadsData;
+    } else {
+      result = leadsData.filter(leadStatus => leadStatus === status);
+    }
+    return result?.map((lead)=>{
       return <tr>
       <td>
         <span className='align-middle font-weight-bold'>{lead.client._id}</span>
@@ -139,19 +147,18 @@ const TableHover = (props) => {
             <MoreVertical size={14} />
           </DropdownToggle>
           <DropdownMenu right>
-          <DropdownItem className='w-100 leads_dropdown_items'>
-            
+          <DropdownItem className='w-100 leads_dropdown_items' onClick={()=>{setStatus('OPEN')}}>
             Open
-            </DropdownItem>
-            <DropdownItem className='w-100 leads_dropdown_items'>
-            Assigned</DropdownItem>
-            <DropdownItem className='w-100 leads_dropdown_items'>
-            
-            Pending</DropdownItem>
-            <DropdownItem className='w-100 leads_dropdown_items'>
-            
-            
-            Closed</DropdownItem>
+          </DropdownItem>
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("ASSIGNED")}}>
+            Assigned
+          </DropdownItem>
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("PENDING")}}>  
+            Pending
+          </DropdownItem>
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("CLOSED")}}>  
+            Closed
+          </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
           </div>
