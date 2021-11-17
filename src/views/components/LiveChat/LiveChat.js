@@ -10,8 +10,8 @@ const LiveChat = () => {
     const [backgroundColor, setBackgroundColor] = useState('')
     const [textColor, setTextColor] = useState('')
     const [chatVisibility, setChatVisibility] = useState('')
-    const [backgroundStatus, setBackgroundStatus] = useState('')
-    const [message, setMessage] = useState('')
+    const [backgroundStatus, setBackgroundStatus] = useState('Hi, I’m here to help you find your way.')
+    const [message, setMessage] = useState('What would you like to do?')
 
     const postSettings = async () => {
         const token = localStorage.getItem('token');
@@ -99,12 +99,12 @@ const LiveChat = () => {
                     <div className="background_status">
                         <h4>Background Status:</h4>
 
-                        <input placeholder="hi, im IZ bot" onChange={(e) => { setBackgroundStatus(e.target.value) }}/>
+                        <input placeholder="hi, im IZ bot" value = {backgroundStatus} onChange={(e) => { setBackgroundStatus(e.target.value) }}/>
                     </div>
                     <div className="background_status">
                         <h4>Message</h4>
 
-                        <input placeholder="What would You like to do" onChange={(e) => { setMessage(e.target.value) }}/>
+                        <input placeholder="What would You like to do" value = {message} onChange={(e) => { setMessage(e.target.value) }}/>
                     </div>
                     <button className="save-btn" onClick={()=>{postSettings()}}>Save</button>
                 </div>
