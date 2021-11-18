@@ -116,7 +116,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
             </h3>
           </div>
           <div className="chat_head_right_icons">
-
+                <Delete/>
           </div>
         </div>
       </div>
