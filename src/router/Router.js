@@ -117,7 +117,14 @@ const Router = () => {
 
       // ** RouterProps to pass them to Layouts
       const routerProps = {}
-
+      const isLoggedIn = () => {
+        const token  = localStorage.getItem('token');
+         if(token){
+           return true;
+         } else {
+           return false;
+         }
+      }
       return (
         <Route path={LayoutPaths} key={index}>
           <LayoutTag
@@ -135,12 +142,17 @@ const Router = () => {
                     key={route.path}
                     path={route.path}
                     exact={route.exact === true}
-                    render={props => {
-                      // ** Assign props to routerProps
+                    render={ props => {
                       Object.assign(routerProps, {
                         ...props,
                         meta: route.meta
                       })
+                      return isLoggedIn() ? <Redirect to={route.path}/> : <Redirect to={DefaultRoute}/> 
+                    }}
+
+                    render={props => {
+                      // ** Assign props to routerProps
+                      
 
                       return (
                         <Suspense fallback={null}>
@@ -183,14 +195,7 @@ const Router = () => {
       )
     })
   }
-  const isLoggedIn = () => {
-    const token  = localStorage.getItem('token');
-     if(token){
-       return true;
-     } else {
-       return false;
-     }
-  }
+
   return (
     <AppRouter basename={process.env.REACT_APP_BASENAME}>
       <Switch>
@@ -200,20 +205,6 @@ const Router = () => {
           path='/'
           render={() => {
             return <Redirect to={DefaultRoute}/>
-          }}
-        />
-        <Route
-          exact
-          path='/home'
-          render={() => {
-            return isLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute}/>
-          }}
-        />
-        <Route
-          exact
-          path='/apps/chat'
-          render={() => {
-            return isLoggedIn() ? <Redirect to='/apps/chat'/> : <Redirect to={DefaultRoute}/>
           }}
         />
         {/* <Route
