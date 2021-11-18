@@ -160,7 +160,7 @@ const TableHover = (props) => {
     </tr>
     })
   }
-  const changeStatus = () => {
+  const changeStatus = async () => {
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
       const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
       const entity = 'chat'
