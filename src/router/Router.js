@@ -203,7 +203,7 @@ const Router = () => {
           exact
           path='/home'
           render={() =>{
-            return isLoggedIn() ? <Redirect to='/home' /> : <Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout>
+            return isLoggedIn() ? <Redirect to='/home' /> : <Redirect to={DefaultRoute}/>
           }}
         />
         {ResolveRoutes()}
