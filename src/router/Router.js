@@ -206,13 +206,13 @@ const Router = () => {
             return <Redirect to={DefaultRoute}/>
           }}
         />
-        <Route
+        {/* <Route
           exact
-          path='/home'
+          path='/'
           render={() => {
-            return isLoggedIn()? <Redirect to='/home'/> : <Redirect to={DefaultRoute} />
+            return <Redirect to={DefaultRoute} />
           }}
-        />
+        /> */}
         {/* Not Auth Route */}
         <Route
           exact
