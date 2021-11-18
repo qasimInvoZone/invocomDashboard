@@ -178,7 +178,6 @@ const TableHover = (props) => {
       } catch (e) {
         console.log(e);
       }
-    }
   }
   return (
 
@@ -227,5 +226,6 @@ const TableHover = (props) => {
       
     </div>
   )
+}
 
 export default TableHover
