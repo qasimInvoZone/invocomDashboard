@@ -31,6 +31,7 @@ const Home = () => {
 
     const fetchDashboard = async () => {
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
+      console.log('process.env.REACT_APP_INVOCOM_API_URL',process.env.REACT_APP_INVOCOM_API_URL)
       const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
       const entity = 'dashboard'
       const endPoint = `${baseUrl}/${apiVersion}/${entity}/`
