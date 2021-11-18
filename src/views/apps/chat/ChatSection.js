@@ -103,6 +103,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
       const endPoint = `${baseUrl}/${apiVersion}/${entity}/status-update`
       const token = localStorage.getItem('token');
       const chatId = chat._id;
+      console.log("chatId, token",chatId, token)
       const status = "CLOSED"
       try {
         const response = await axios.post(endPoint,{chatId,status},
