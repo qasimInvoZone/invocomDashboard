@@ -196,7 +196,7 @@ const Router = () => {
           exact
           path='/'
           render={() => {
-            return <Redirect to={DefaultRoute} />
+            return isLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute} />
           }}
         />
         {/* Not Auth Route */}
