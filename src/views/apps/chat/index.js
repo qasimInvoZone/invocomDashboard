@@ -5,6 +5,7 @@ import Sidebar from './SidebarLeft'
 import ChatSection from './ChatSection'
 import UserProfileSidebar from './UserProfileSidebar'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 import { SocketContext } from '../../../service/socket'
 
 import './chatStyle.css'
