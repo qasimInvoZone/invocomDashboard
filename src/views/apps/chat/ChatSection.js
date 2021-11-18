@@ -96,6 +96,26 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }
+  const closeChat = async () => {
+    const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
+      const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
+      const entity = 'chat'
+      const endPoint = `${baseUrl}/${apiVersion}/${entity}/status-update`
+      const token = localStorage.getItem('token');
+      const chatId = chat._id;
+      const status = "CLOSED"
+      try {
+        const response = await axios.post(endPoint,{chatId,status},
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        setIsStatusUpdate(true);
+      } catch (e) {
+        console.log(e);
+      }
+  }
   return (
     <>
     <div>
@@ -116,7 +136,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
             </h3>
           </div>
           <div className="chat_head_right_icons">
-                <Delete/>
+                <Delete onClick={()=>{closeChat()}}/>
           </div>
         </div>
       </div>
