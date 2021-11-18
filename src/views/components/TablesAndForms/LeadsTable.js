@@ -127,10 +127,33 @@ const TableHover = (props) => {
         </Badge>
           ) : (
             <Badge className='mr-1 pending_status'>
-        pending
+        Pending
         </Badge>
           )
         }
+      </td>
+      <td>
+      <div>
+          <UncontrolledDropdown>
+          <DropdownToggle className='cursor-pointer' tag='span'>
+            <MoreVertical size={14} />
+          </DropdownToggle>
+          <DropdownMenu right>
+          <DropdownItem className='w-100 leads_dropdown_items' onClick={()=>{setStatus('OPEN')}}>
+            Open
+          </DropdownItem>
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("ASSIGNED")}}>
+            Assigned
+          </DropdownItem>
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("PENDING")}}>  
+            Pending
+          </DropdownItem>
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("CLOSED")}}>  
+            Closed
+          </DropdownItem>
+          </DropdownMenu>
+        </UncontrolledDropdown>
+          </div>
       </td>
     </tr>
     })
