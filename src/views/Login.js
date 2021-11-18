@@ -31,7 +31,7 @@ const Login = ({ history }) => {
     axios.post(endPoint, { email, password }).then((response) => {
       localStorage.setItem('token', response.data.data.token)
       localStorage.setItem('user', JSON.stringify(response.data.data.user)) 
-      return <Redirect to='/home'/>
+      history.push('/home')
     }).catch(err => {
       setError(err?.response?.data?.message)
       setHasError(true)
