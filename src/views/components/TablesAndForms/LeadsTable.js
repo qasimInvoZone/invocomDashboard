@@ -227,6 +227,5 @@ const TableHover = (props) => {
       
     </div>
   )
-}
 
 export default TableHover
