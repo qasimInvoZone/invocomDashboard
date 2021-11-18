@@ -207,7 +207,7 @@ const Router = () => {
           exact
           path='/not-authorized'
           render={()=> {
-            return isUserLoggedIn() ? <Redirect to='/home'/> :<Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout>
+            return isUserLoggedIn() ? <Redirect to='/home'/> : <Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout>
           }}
         />
         {ResolveRoutes()}
