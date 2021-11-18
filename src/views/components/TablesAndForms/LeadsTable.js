@@ -155,16 +155,16 @@ const TableHover = (props) => {
             <MoreVertical size={14} />
           </DropdownToggle>
           <DropdownMenu right>
-          <DropdownItem className='w-100 leads_dropdown_items' onClick={()=>{const status = "OPEN";changeStatus(lead.chatId,status)}}>
+          <DropdownItem className='w-100 leads_dropdown_items' onClick={()=>{const status = "OPEN";props.changeStatus(lead.chatId,status)}}>
             Open
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{const status = "ASSIGNED";changeStatus(lead.chatId,status)}}>
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{const status = "ASSIGNED";props.changeStatus(lead.chatId,status)}}>
             Assigned
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{const status = "PENDING";changeStatus(lead.chatId,status)}}>  
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{const status = "PENDING";props.changeStatus(lead.chatId,status)}}>  
             Pending
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{const status = "CLOSED";changeStatus(lead.chatId,status)}}>  
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{const status = "CLOSED";props.changeStatus(lead.chatId,status)}}>  
             Closed
           </DropdownItem>
           </DropdownMenu>
@@ -174,26 +174,26 @@ const TableHover = (props) => {
     </tr>
     })
   }
-  const changeStatus = async (chatId,status) => {
-    console.log("chatId,status",chatId,status);
-    const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
-      const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
-      const entity = 'chat'
-      const endPoint = `${baseUrl}/${apiVersion}/${entity}/status-update`
-      const token = localStorage.getItem('token');
-      try {
-        const response = await axios.post(endPoint,{chatId, status},
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        })
-        setIsStatusUpdate(true);
-        history.push("/leads")
-      } catch (e) {
-        console.log(e);
-      }
-  }
+  // const changeStatus = async (chatId,status) => {
+  //   console.log("chatId,status",chatId,status);
+  //   const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
+  //     const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
+  //     const entity = 'chat'
+  //     const endPoint = `${baseUrl}/${apiVersion}/${entity}/status-update`
+  //     const token = localStorage.getItem('token');
+  //     try {
+  //       const response = await axios.post(endPoint,{chatId, status},
+  //       {
+  //         headers: {
+  //           'Authorization': `Bearer ${token}`
+  //         }
+  //       })
+  //       setIsStatusUpdate(true);
+  //       history.push("/leads")
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  // }
   return (
 
     <div className="complete_table">
