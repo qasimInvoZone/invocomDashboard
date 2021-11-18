@@ -201,7 +201,7 @@ const Router = () => {
         {/* Not Auth Route */}
         <Route
           exact
-          path='/not-authorized'
+          path='/home'
           render={() =>{
             return isLoggedIn() ? <Redirect to='/home' /> : <Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout>
           }}
