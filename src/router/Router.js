@@ -216,20 +216,6 @@ const Router = () => {
             return isLoggedIn() ? <Redirect to='/apps/chat'/> : <Redirect to={DefaultRoute}/>
           }}
         />
-        <Route
-          exact
-          path='/home'
-          render={() => {
-            return isLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute}/>
-          }}
-        />
-        <Route
-          exact
-          path='/home'
-          render={() => {
-            return isLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute}/>
-          }}
-        />
         {/* <Route
           exact
           path='/'
