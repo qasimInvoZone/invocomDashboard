@@ -183,10 +183,6 @@ const Router = () => {
       )
     })
   }
-  const isLoggedIn = () => {
-    const token = localStorage.getItem('token');
-    return token ? true : false;
-  }
 
   return (
     <AppRouter basename={process.env.REACT_APP_BASENAME}>
@@ -196,17 +192,27 @@ const Router = () => {
           exact
           path='/'
           render={() => {
+            return isUserLoggedIn() ? <Redirect to={DefaultRoute} /> : <Redirect to='/login' />
+          }}
+        />
+        <Route
+          exact
+          path='/'
+          render={() => {
             return <Redirect to={DefaultRoute} />
+          }}
+        />
+        {/* Not Auth Route */}
+        <Route
+          exact
+          path='/not-authorized'
+          render={()=> {
+            return isUserLoggedIn() ? <Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout> : <Redirect to='/home'/>
           }}
         />
         {ResolveRoutes()}
         {/* NotFound Error page */}
-        <Route path='*' component={Error} render={() =>{
-            if(isLoggedIn()){
-              return <Redirect to={DefaultRoute} />
-            }
-
-          }}/>/
+        <Route path='*' component={Error} />/
       </Switch>
     </AppRouter>
   )
