@@ -11,6 +11,7 @@ import './chatStyle.css'
 
 import '@styles/base/pages/app-chat.scss'
 import '@styles/base/pages/app-chat-list.scss'
+import { Redirect } from 'react-router'
 
 const user = JSON.parse(localStorage.getItem('user'))
 const token = localStorage.getItem('token')
@@ -88,7 +89,6 @@ const AppChat = () => {
           Authorization: `Bearer ${token}`
         }
       }
-  
       try {
         const response = await axios.get(endPoint, options)
         if (response.status === 200) {
@@ -99,6 +99,8 @@ const AppChat = () => {
       } catch (e) {
         
       }
+    } else {
+      return <Redirect to={'/login'}/>
     }
   }
 
