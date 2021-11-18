@@ -137,7 +137,7 @@ const TableHover = (props) => {
       </td>
       <td>
       <div>
-          <UncontrolledDropdown>
+          <UncontrolledDropdown style={{textAlign: 'center'}}>
           <DropdownToggle className='cursor-pointer' tag='span'>
             <MoreVertical size={14} />
           </DropdownToggle>
