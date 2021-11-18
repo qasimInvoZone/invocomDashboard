@@ -112,7 +112,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
             'Authorization': `Bearer ${token}`
           }
         })
-        setIsStatusUpdate(true);
+
       } catch (e) {
         console.log(e);
       }
@@ -176,7 +176,9 @@ const ChatSection = ({ chat, sendMessageParent }) => {
           <div ref={messagesEndRef} />
         </div>
         <div className="right-section-bottom">
-          <input type="text" name="" value={message} placeholder="type a message..." onClick={()=>{setShowEmoji(false)}} onChange={(e) => setMessage(e.target.value)} onKeyPress={(e) => handleKeyPress(e)}/>
+          {chat.STATUS != "CLOSED" ? <input type="text" name="" value={message} placeholder="type a message..." onClick={()=>{setShowEmoji(false)}} onChange={(e) => setMessage(e.target.value)} onKeyPress={(e) => handleKeyPress(e)}/>: <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
+            <div>This conversation is CLOSED</div>
+            </div>}
             {chat.STATUS != "CLOSED" ? 
               chat.STATUS != "PENDING" || isAssigned? (
                 
@@ -204,7 +206,10 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                 <div className="right-section-bottom-restrict-buttons-join" onClick={() => fetchAdmins()}><strong>Assign</strong></div>
               </div>
             </div>)
-            : ''}
+            :  <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
+            <div>This conversation is CLOSED</div>
+            </div>
+              }
             
           
         </div>
