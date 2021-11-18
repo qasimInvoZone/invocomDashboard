@@ -93,13 +93,15 @@ const avatarGroupData4 = [
 
 const TableHover = (props) => {
   const [status, setStatus] = useState('OPEN');
+  const [filterStatus, setFilterStatus] = useState('OPEN');
+  const [isStatusUpdate, setIsStatusUpdate] = useState(false);
   const renderSummary = (leadsData) => {
     console.log("leads Data ::::::: ",leadsData);
     let result = leadsData;
     if(status == "OPEN"){
       result = leadsData;
     } else {
-      result = leadsData.filter(leadStatus => leadStatus.STATUS == status);
+      result = leadsData.filter(leadStatus => leadStatus.STATUS == filterStatus);
     }
     return result?.map((lead)=>{
       return <tr>
@@ -139,16 +141,16 @@ const TableHover = (props) => {
             <MoreVertical size={14} />
           </DropdownToggle>
           <DropdownMenu right>
-          <DropdownItem className='w-100 leads_dropdown_items' onClick={()=>{setStatus('OPEN')}}>
+          <DropdownItem className='w-100 leads_dropdown_items' onClick={()=>{setStatus('OPEN');changeStatus()}}>
             Open
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("ASSIGNED")}}>
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("ASSIGNED");changeStatus()}}>
             Assigned
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("PENDING")}}>  
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("PENDING");changeStatus()}}>  
             Pending
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("CLOSED")}}>  
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("CLOSED");changeStatus()}}>  
             Closed
           </DropdownItem>
           </DropdownMenu>
@@ -157,6 +159,26 @@ const TableHover = (props) => {
       </td>
     </tr>
     })
+  }
+  const changeStatus = () => {
+    const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
+      const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
+      const entity = 'chat'
+      const endPoint = `${baseUrl}/${apiVersion}/${entity}/status-update`
+      const token = localStorage.getItem('token');
+      const chatId = '';
+      try {
+        const response = await axios.post(endPoint,{chatId,status},
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        setIsStatusUpdate(true);
+      } catch (e) {
+        console.log(e);
+      }
+    }
   }
   return (
 
@@ -170,16 +192,16 @@ const TableHover = (props) => {
             <MoreVertical size={14} />
           </DropdownToggle>
           <DropdownMenu right>
-          <DropdownItem className='w-100 leads_dropdown_items' onClick={()=>{setStatus('OPEN')}}>
+          <DropdownItem className='w-100 leads_dropdown_items' onClick={()=>{setFilterStatus('OPEN')}}>
             Open
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("ASSIGNED")}}>
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setFilterStatus("ASSIGNED")}}>
             Assigned
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("PENDING")}}>  
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setFilterStatus("PENDING")}}>  
             Pending
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("CLOSED")}}>  
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setFilterStatus("CLOSED")}}>  
             Closed
           </DropdownItem>
           </DropdownMenu>
@@ -195,6 +217,7 @@ const TableHover = (props) => {
           <th>Assignee</th>
           <th>Date</th>
           <th>Status</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
