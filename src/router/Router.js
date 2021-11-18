@@ -202,16 +202,21 @@ const Router = () => {
         {/* Not Auth Route */}
         <Route
           exact
-          path='/not-authorized'
+          path='/home'
           render={() =>{
             return isLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute} />
           }}
         />
+        <Route
+          exact
+          path='/apps/chat'
+          render={() =>{
+            return isLoggedIn() ? <Redirect to='/apps/chat'/> : <Redirect to={DefaultRoute} />
+          }}
+        />
         {ResolveRoutes()}
         {/* NotFound Error page */}
-        <Route path='*' component={Error} render={() =>{
-            return isLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute} />
-          }}/>/
+        <Route path='*' component={Error} />/
       </Switch>
     </AppRouter>
   )
