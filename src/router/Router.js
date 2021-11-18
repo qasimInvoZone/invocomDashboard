@@ -192,7 +192,7 @@ const Router = () => {
           exact
           path='/'
           render={() => {
-            return isUserLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute}/>
+            return localStorage.getItem('token') ? <Redirect to='/home'/> : <Redirect to={DefaultRoute}/>
           }}
         />
         {/* <Route
@@ -207,7 +207,7 @@ const Router = () => {
           exact
           path='/not-authorized'
           render={()=> {
-            return isUserLoggedIn() ? <Redirect to='/home'/> : <Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout>
+            return localStorage.getItem('token') ? <Redirect to='/home'/> : <Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout>
           }}
         />
         {ResolveRoutes()}
