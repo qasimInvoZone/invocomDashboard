@@ -29,6 +29,7 @@ const Autocomplete = props => {
   const [userInput, setUserInput] = useState(props.value ? props.value : '')
 
   // ** Vars
+  
   const history = useHistory()
   let filteredData = []
 

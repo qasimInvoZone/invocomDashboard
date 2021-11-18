@@ -519,6 +519,28 @@ padding-bottom: 1rem;
 background-color: rgb(170, 180, 190);
 color: white;
 }
+.close_status{
+    width: 80px;
+    height: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: red;
+    color: white;
+    }
+.open_status{
+        width: 80px;
+        height: 50;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background-color: skyblue;
+        color: white;
+        }
 .assigned_status{
 width: 80px;
 height: 50;
@@ -527,7 +549,7 @@ justify-content: center;
 align-items: center;
 padding-top: 1rem;
 padding-bottom: 1rem;
-color: white;
+color: red;
 background-color: #0078e8;
 }
 .active_status{

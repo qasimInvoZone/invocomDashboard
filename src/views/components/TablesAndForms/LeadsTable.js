@@ -4,8 +4,10 @@ import avatar2 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
 import avatar3 from '@src/assets/images/portrait/small/avatar-s-7.jpg'
 import { MoreVertical, Edit, Trash } from 'react-feather'
 import { Table, Badge, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+
 var moment = require('moment');
 moment().format();
 const avatarGroupData1 = [
@@ -93,13 +95,16 @@ const avatarGroupData4 = [
 ]
 
 const TableHover = (props) => {
-  const [status, setStatus] = useState('OPEN');
+  const history = useHistory()
   const [filterStatus, setFilterStatus] = useState('OPEN');
   const [isStatusUpdate, setIsStatusUpdate] = useState(false);
+  useEffect(()=>{
+    renderSummary(props?.summary)
+  }, [isStatusUpdate,filterStatus,setIsStatusUpdate,setFilterStatus])
   const renderSummary = (leadsData) => {
     console.log("leads Data ::::::: ",leadsData);
     let result = leadsData;
-    if(status == "OPEN"){
+    if(filterStatus == "OPEN"){
       result = leadsData;
     } else {
       result = leadsData.filter(leadStatus => leadStatus.STATUS == filterStatus);
@@ -117,7 +122,7 @@ const TableHover = (props) => {
       {lead.assignee.fullname}
       </td>
       <td>
-        <p style={{fontWeight: 'bold'}}>{moment(lead.meeting.startDate).toString()}</p>
+        <p style={{fontWeight: 'bold'}}>{moment(lead.createdAt).toString()}</p>
         <p style={{color: 'gray'}}></p>
       
       </td>
@@ -128,11 +133,19 @@ const TableHover = (props) => {
 <Badge className='mr-1 active_status'>
         Assigned
         </Badge>
-          ) : (
+          ) : lead.STATUS === "PENDING" ? (
             <Badge className='mr-1 pending_status'>
         Pending
         </Badge>
-          )
+          ) : lead.STATUS === "CLOSED" ? (
+            <Badge className='mr-1 close_status'>
+        Closed
+        </Badge>
+          ) : lead.STATUS === "OPEN" ? (
+            <Badge className='mr-1 open_status'>
+        Open
+        </Badge>
+          ) : ''
         }
       </td>
       <td>
@@ -142,16 +155,16 @@ const TableHover = (props) => {
             <MoreVertical size={14} />
           </DropdownToggle>
           <DropdownMenu right>
-          <DropdownItem className='w-100 leads_dropdown_items' onClick={()=>{setStatus('OPEN');changeStatus()}}>
+          <DropdownItem className='w-100 leads_dropdown_items' onClick={()=>{const status = "OPEN";changeStatus(lead.chatId,status)}}>
             Open
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("ASSIGNED");changeStatus()}}>
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{const status = "ASSIGNED";changeStatus(lead.chatId,status)}}>
             Assigned
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("PENDING");changeStatus()}}>  
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{const status = "PENDING";changeStatus(lead.chatId,status)}}>  
             Pending
           </DropdownItem>
-          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{setStatus("CLOSED");changeStatus()}}>  
+          <DropdownItem className='w-100 leads_dropdown_items'  onClick={()=>{const status = "CLOSED";changeStatus(lead.chatId,status)}}>  
             Closed
           </DropdownItem>
           </DropdownMenu>
@@ -161,21 +174,22 @@ const TableHover = (props) => {
     </tr>
     })
   }
-  const changeStatus = async () => {
+  const changeStatus = async (chatId,status) => {
+    console.log("chatId,status",chatId,status);
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
       const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
       const entity = 'chat'
       const endPoint = `${baseUrl}/${apiVersion}/${entity}/status-update`
       const token = localStorage.getItem('token');
-      const chatId = '';
       try {
-        const response = await axios.post(endPoint,{chatId,status},
+        const response = await axios.post(endPoint,{chatId, status},
         {
           headers: {
             'Authorization': `Bearer ${token}`
           }
         })
         setIsStatusUpdate(true);
+        history.push("/leads")
       } catch (e) {
         console.log(e);
       }

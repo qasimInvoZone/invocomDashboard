@@ -4,9 +4,11 @@ import ChartjsLine from '../views/components/charts/ChartjsLineChart'
 import LeadsTable from '../views/components/TablesAndForms/LeadsTable'
 import axios from 'axios'
 import { SocketContext } from '../service/socket' 
+import { useHistory } from 'react-router-dom'
 
 
 const Leads = () => {
+  const history = useHistory()
   const socket = useContext(SocketContext);
   const [leadsData, setleadsData] = useState({});
   const [onlineUsers, setOnlineUser] = useState(0)
