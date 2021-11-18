@@ -184,25 +184,18 @@ const Router = () => {
     })
   }
   const isLoggedIn = () => {
-    return localStorage.getItem('token') ? true : false;
+    const token = localStorage.getItem('token');
+    return token ? true : false;
   }
 
   return (
     <AppRouter basename={process.env.REACT_APP_BASENAME}>
       <Switch>
-        {/* If user is logged in Redirect user to DefaultRoute else to login */}
         <Route
           exact
           path='/'
           render={() => {
-            return isLoggedIn() ? <Redirect to={DefaultRoute} /> : <Redirect to='/login' />
-          }}
-        />
-        <Route
-          exact
-          path='/'
-          render={() => {
-            return <Redirect to={DefaultRoute} />
+            return isLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute}/>
           }}
         />
         {/* Not Auth Route */}
@@ -210,7 +203,7 @@ const Router = () => {
           exact
           path='/not-authorized'
           render={() =>{
-            return isLoggedIn() ? <Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout> : <Redirect to='/home'/>
+            return isLoggedIn() ? <Redirect to='/home' /> : <Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout>
           }}
         />
         {ResolveRoutes()}
