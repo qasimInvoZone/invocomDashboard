@@ -204,12 +204,14 @@ const Router = () => {
           exact
           path='/not-authorized'
           render={() =>{
-            return isLoggedIn() ? <Redirect to='/home'/> : <Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout>
+            return isLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute} />
           }}
         />
         {ResolveRoutes()}
         {/* NotFound Error page */}
-        <Route path='*' component={Error} />/
+        <Route path='*' component={Error} render={() =>{
+            return isLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute} />
+          }}/>/
       </Switch>
     </AppRouter>
   )
