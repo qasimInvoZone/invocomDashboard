@@ -206,8 +206,8 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                 <div className="right-section-bottom-restrict-buttons-join" onClick={() => fetchAdmins()}><strong>Assign</strong></div>
               </div>
             </div>)
-            :  <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
-            <div>This conversation is CLOSED</div>
+            :  <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict" >
+            <div style={{width:'100%', textAlign:'center', marginBottom:'-60px'}} >This conversation is <strong>CLOSED</strong></div>
             </div>
               }
             
