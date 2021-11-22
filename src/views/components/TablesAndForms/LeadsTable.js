@@ -95,7 +95,6 @@ const avatarGroupData4 = [
 ]
 
 const TableHover = (props) => {
-  const history = useHistory()
   const [filterStatus, setFilterStatus] = useState('OPEN');
   const [isStatusUpdate, setIsStatusUpdate] = useState(false);
   useEffect(()=>{
@@ -103,8 +102,7 @@ const TableHover = (props) => {
   }, [isStatusUpdate,filterStatus,setIsStatusUpdate,setFilterStatus])
   const renderSummary = (leadsData) => {
     console.log("leads Data ::::::: ",leadsData);
-    let result = leadsData;
-    
+    let result = leadsData.filter(leadStatus => leadStatus.STATUS == filterStatus);
     return result?.map((lead)=>{
       return <tr>
       <td>
