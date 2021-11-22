@@ -28,10 +28,9 @@ const UserDropdown = () => {
   //** ComponentDidMount
   useEffect(() => {
     if (isUserLoggedIn() !== null) {
-      setUserData(JSON.parse(localStorage.getItem('userData')))
+      setUserData(JSON.parse(localStorage.getItem('user')))
     }
   }, [])
-
   //** Vars
   const userAvatar = (userData && userData.avatar) || TempUser
 
@@ -46,10 +45,10 @@ const UserDropdown = () => {
       </div>
       <DropdownMenu right>
         <div style={{margin: '1rem', borderBottom: ' 1px solid grey'}}>
-          <h5 style={{color: 'Black'}}>Username</h5>
-          <p>Administrator</p>
+          <h5 style={{color: 'Black'}}>{userData?.fullname}</h5>
+          <p>{userData?.role}</p>
           </div>
-      <DropdownItem tag={Link} to='/not-authorized' onClick={() => dispatch(handleLogout())}>
+      <DropdownItem tag={Link} to='/setting' onClick={() => dispatch(handleLogout())}>
           {/* <Power size={14} className='mr-75' /> */}
           <span className='align-middle'>Setting</span>
         </DropdownItem>
