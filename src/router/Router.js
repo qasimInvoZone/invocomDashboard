@@ -24,6 +24,7 @@ import HorizontalLayout from '@src/layouts/HorizontalLayout'
 
 const Router = () => {
   // ** Hooks
+  console.log(isUserLoggedIn());
   const [layout, setLayout] = useLayout()
   const [transition, setTransition] = useRouterTransition()
 
@@ -86,7 +87,7 @@ const Router = () => {
        ** Then redirect user to login
        */
 
-      return <Redirect to='/login' />
+      return <Redirect to={DefaultRoute} />
     } else if (route.meta && route.meta.authRoute && isUserLoggedIn()) {
       // ** If route has meta and authRole and user is Logged in then redirect user to home page (DefaultRoute)
       return <Redirect to='/' />
@@ -187,14 +188,6 @@ const Router = () => {
       )
     })
   }
-  const isLoggedIn = () => {
-    const token  = localStorage.getItem('token');
-     if(token){
-       return true;
-     } else {
-       return false;
-     }
-  }
   return (
     <AppRouter basename={process.env.REACT_APP_BASENAME}>
       <Switch>
@@ -203,9 +196,10 @@ const Router = () => {
           exact
           path='/'
           render={() => {
-            return <Redirect to={DefaultRoute}/>
+            return isUserLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute}/>
           }}
         />
+
         {/* <Route
           exact
           path='/'
@@ -214,13 +208,7 @@ const Router = () => {
           }}
         /> */}
         {/* Not Auth Route */}
-        <Route
-          exact
-          path='/not-authorized'
-          render={()=> {
-            return isUserLoggedIn() ? <Redirect to='/home'/> : <Layouts.BlankLayout> <NotAuthorized /> </Layouts.BlankLayout>
-          }}
-        />
+        
         {ResolveRoutes()}
         {/* NotFound Error page */}
         <Route path='*' component={Error} />
