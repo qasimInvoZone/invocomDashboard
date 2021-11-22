@@ -104,11 +104,7 @@ const TableHover = (props) => {
   const renderSummary = (leadsData) => {
     console.log("leads Data ::::::: ",leadsData);
     let result = leadsData;
-    if(filterStatus == "OPEN"){
-      result = leadsData;
-    } else {
-      result = leadsData.filter(leadStatus => leadStatus.STATUS == filterStatus);
-    }
+    
     return result?.map((lead)=>{
       return <tr>
       <td>
