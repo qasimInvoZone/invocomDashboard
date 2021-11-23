@@ -11,7 +11,7 @@ var moment = require('moment');
 
 const ChatSection = ({ chat, sendMessageParent }) => {
   const messagesEndRef = useRef(null)
-  const history = useHistory();
+
   const location = useLocation();
   const [user, setUser] = useState({})
   const [isAssigned, setIsAssigned] = useState(false)

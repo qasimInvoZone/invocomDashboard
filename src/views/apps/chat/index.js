@@ -1,5 +1,6 @@
 // ** React Imports
 import { useState, useEffect, useContext } from 'react'
+import { useHistory }from 'react-router-dom';
 import { Menu } from 'react-feather'
 import Sidebar from './SidebarLeft'
 import ChatSection from './ChatSection'
@@ -17,7 +18,12 @@ const user = JSON.parse(localStorage.getItem('user'))
 const token = localStorage.getItem('token')
 
 const AppChat = () => {
-  
+
+  const history = useHistory();
+  const token = localStorage.getItem('token');
+  if(!token){
+   history.push('/login');
+  } 
   const socket = useContext(SocketContext);
 
   const [filteredChat, setFilterChat] = useState({})

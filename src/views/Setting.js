@@ -8,8 +8,15 @@ import Button from 'reactstrap/lib/Button'
 import LiveChat from '../views/components/LiveChat/LiveChat'
 import Accounts from '../views/components/Accounts-setting/Accounts'
 import Notification from '../views/components/Notification-setting/Notification'
-import Admin from '../views/components/Admin-setting/Admin'
+import Admin from '../views/components/Admin-setting/Admin'  
+import { useHistory } from 'react-router-dom'
 const Setting = () => {
+
+  const history = useHistory()
+  const token = localStorage.getItem('token');
+  if(!token){
+    history.push('/login');
+  }
     return (
         <div className="settings">
 

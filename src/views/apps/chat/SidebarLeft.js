@@ -8,11 +8,16 @@ import ChartjsLineChart from '../../components/charts/ChartjsLineChart'
 import Arrow from '../../../assets/images/icons/customIcons/arrowbottom.svg'
 import { Search, Link } from 'react-feather'
 import FilterSideBar from './ChatDropDowns/filterSideBar'
-
+import { useHistory } from 'react-router-dom'
+  
 
 // import User3 from '../../../assets/images/portrait/avatar-s-3.jpg'
 const SidebarLeft = ({ renderChatParent, chats }) => {
-
+  const history = useHistory()
+  const token = localStorage.getItem('token');
+  if(!token){
+    history.push('/login');
+  }
   const [user, setUser] = useState({})
   const [search, setSearch] = useState('')
   useEffect(async () => {
