@@ -1,6 +1,6 @@
 // ** React Imports
 import { Suspense, useContext, lazy } from 'react'
-
+import { useEffect, useState } from 'react'
 // ** Utils
 import { isUserLoggedIn } from '@utils'
 import { useLayout } from '@hooks/useLayout'
@@ -22,11 +22,18 @@ import BlankLayout from '@layouts/BlankLayout'
 import VerticalLayout from '@src/layouts/VerticalLayout'
 import HorizontalLayout from '@src/layouts/HorizontalLayout'
 
+
+
 const Router = () => {
   // ** Hooks
-  console.log(isUserLoggedIn());
+  const [auth, setAuth] = useState(localStorage.getItem('token'))
   const [layout, setLayout] = useLayout()
   const [transition, setTransition] = useRouterTransition()
+
+  useEffect(() => {
+    setAuth(localStorage.getItem('token'));
+    console.log('token',auth)
+  }, [auth]);
 
   // ** ACL Ability Context
   const ability = useContext(AbilityContext)
@@ -87,7 +94,7 @@ const Router = () => {
        ** Then redirect user to login
        */
 
-      return <Redirect to={DefaultRoute} />
+      return <Redirect to='/login' />
     } else if (route.meta && route.meta.authRoute && isUserLoggedIn()) {
       // ** If route has meta and authRole and user is Logged in then redirect user to home page (DefaultRoute)
       return <Redirect to='/' />
@@ -118,7 +125,6 @@ const Router = () => {
 
       // ** RouterProps to pass them to Layouts
       const routerProps = {}
-     
       return (
         <Route path={LayoutPaths} key={index}>
           <LayoutTag
@@ -145,7 +151,6 @@ const Router = () => {
 
                     render={props => {
                       // ** Assign props to routerProps
-                      
 
                       return (
                         <Suspense fallback={null}>
@@ -188,6 +193,15 @@ const Router = () => {
       )
     })
   }
+  const isLoggedIn = () => {
+    const token  = localStorage.getItem('token');
+     if(token){
+       return true;
+     } else {
+       return false;
+     }
+  }
+  console.log("auth:", auth);
   return (
     <AppRouter basename={process.env.REACT_APP_BASENAME}>
       <Switch>
@@ -196,10 +210,9 @@ const Router = () => {
           exact
           path='/'
           render={() => {
-            return isUserLoggedIn() ? <Redirect to='/home'/> : <Redirect to={DefaultRoute}/>
+            return (!auth ? <Redirect to={DefaultRoute} /> : <Redirect to='/home' />)
           }}
         />
-
         {/* <Route
           exact
           path='/'
@@ -208,7 +221,13 @@ const Router = () => {
           }}
         /> */}
         {/* Not Auth Route */}
-        
+        {/* <Route
+          exact
+          path='/home'
+          render={()=> {
+            return (auth ? <Redirect to='/home'/> : <Redirect to={DefaultRoute} />)
+          }}
+        /> */}
         {ResolveRoutes()}
         {/* NotFound Error page */}
         <Route path='*' component={Error} />

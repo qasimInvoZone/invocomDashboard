@@ -7,8 +7,12 @@ import { SocketContext } from '../service/socket'
 import { useHistory } from 'react-router-dom'
 
 
-const Leads = () => {
+const Leads = () => { 
   const history = useHistory()
+  const token = localStorage.getItem('token');
+  if(!token){
+    history.push('/login');
+  }
   const socket = useContext(SocketContext);
   const [isUpdated, setIsUpdated] = useState(false);
   const [leadsData, setleadsData] = useState({});

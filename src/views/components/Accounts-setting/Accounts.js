@@ -8,8 +8,8 @@ import Button from 'reactstrap/lib/Button'
 import axios from 'axios'
 const Accounts = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    const [fullname, setFullname] = useState(user.fullname)
-    const [email, setEmail] = useState(user.email)
+    const [fullname, setFullname] = useState(user?.fullname)
+    const [email, setEmail] = useState(user?.email)
     const [password, setPassword] = useState('')
     const updateUser = async () => {
         const baseUrl = process.env.REACT_APP_INVOCOM_API_URL

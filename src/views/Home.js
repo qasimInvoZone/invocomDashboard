@@ -5,9 +5,13 @@ import PieChart from '../views/components/TablesAndForms/ChartjsDoughnutChart'
 import DashboardStats from './components/Stats/DashboardStats'
 import axios from 'axios'
 import { SocketContext } from '../service/socket' 
-
+import { useHistory } from 'react-router-dom'
 const Home = () => {
-  
+  const history = useHistory()
+  const token = localStorage.getItem('token');
+  if(!token){
+    history.push('/login');
+  }
   const socket = useContext(SocketContext);
 
   const [leadsData, setleadsData] = useState({});

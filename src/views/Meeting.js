@@ -5,9 +5,15 @@ import CardMeetup from './components/cards/CardMeetup'
 import CalenderComplete from './components/charts/MeetCompHeader'
 import MeetCardSwiper from './components/Swiper/MeetCardSwiper'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 //import { SocketContext } from '../service/socket' 
 const Meeting = () => {
 
+  const history = useHistory()
+  const token = localStorage.getItem('token');
+  if(!token){
+    history.push('/login');
+  }
   //const socket = useContext(SocketContext);
   const [meetingData, setMeetingData] = useState({});
   //const [onlineUsers, setOnlineUser] = useState(0)
