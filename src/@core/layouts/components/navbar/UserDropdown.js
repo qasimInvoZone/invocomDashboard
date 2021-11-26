@@ -48,7 +48,7 @@ const UserDropdown = () => {
           <h5 style={{color: 'Black'}}>{userData?.fullname}</h5>
           <p>{userData?.role}</p>
           </div>
-      <DropdownItem tag={Link} to='/setting' onClick={() => dispatch(handleLogout())}>
+      <DropdownItem tag={Link} to='/setting'>
           {/* <Power size={14} className='mr-75' /> */}
           <span className='align-middle'>Setting</span>
         </DropdownItem>

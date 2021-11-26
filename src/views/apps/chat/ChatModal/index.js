@@ -3,6 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, FormGroup, I
 import axios from 'axios'
 import { useHistory, useLocation } from 'react-router-dom';
 const ModalForm = (props) => {
+  console.log("admin props",props);
   const [formModal, setFormModal] = useState(true)
   const [assignee, setAssignee] = useState({})
   const [isAssignee, setIsAssignee] = useState(false)
@@ -40,20 +41,24 @@ const ModalForm = (props) => {
     
   }
   const renderAdmins = (admins) => {
+    console.log("ADMINS :::::: ",admins);
     return admins.map((admin)=>{
-      return <div>
+      return <option onClick={()=>{setAssignee(admin)}}>{admin.email}</option>
+    })
+  }
+  return (
+    <div className='demo-inline-spacing'>
       <Modal isOpen={formModal} toggle={() => setFormModal(!formModal)} className='modal-dialog-centered'>
         <ModalHeader toggle={() => setFormModal(!formModal)}></ModalHeader>
         <ModalBody>
           <h2>Assign the conversation</h2>
           <FormGroup>
             <Label for='email'>Email:</Label>
-          <div className="notification-dropdown-chatHistory">
-              <select onClick={()=>{setAssignee(admin)}}>
-              <option>{admin.email}</option>
-              </select>
-              </div>
-      
+            <div className="notification-dropdown-chatHistory">
+            <select >
+              {renderAdmins(props.admins)} 
+            </select>
+            </div>
           </FormGroup>
         </ModalBody>
         <ModalFooter>
@@ -68,12 +73,7 @@ const ModalForm = (props) => {
        
         </ModalFooter>
       </Modal>
-    </div>
-    })
-  }
-  return (
-    <div className='demo-inline-spacing'>
-      {renderAdmins(props.admins)}
+      {/* {renderAdmins(props.admins)} */}
      </div>
   )
 }

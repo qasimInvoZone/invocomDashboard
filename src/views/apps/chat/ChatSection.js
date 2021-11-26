@@ -80,6 +80,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         }
       })
       setAdmins(response.data.adminUsers);
+      console.log(response.data.adminUsers);
       if(response.status == 200){
         setShowModal(!showModal);
       }
