@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState, useEffect } from "react";
+import { Fragment } from "react";
 import {
   Row,
   Col,
@@ -12,13 +12,9 @@ import Leads from "../../../assets/images/icons/customIcons/leads.svg";
 import chat from "../../../assets/images/icons/customIcons/chathistory.svg";
 import meeting from "../../../assets/images/icons/customIcons/meeting.svg";
 import loggedin from "../../../assets/images/icons/customIcons/user-loggedin.svg";
-import { ThemeColors } from "@src/utility/context/ThemeColors";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Cards = (props) => {
-  const context = useContext(ThemeColors);
-
   return (
     <Fragment>
       <Row>

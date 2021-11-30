@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState, useEffect } from "react";
+import { Fragment } from "react";
 import {
   Row,
   Col,
@@ -11,13 +11,8 @@ import {
 import Leads from "../../../assets/images/icons/customIcons/leads.svg";
 import respond from "../../../assets/images/icons/customIcons/respondedLeads.svg";
 import unassigned from "../../../assets/images/icons/customIcons/un-assignedLeads.svg";
-import loggedin from "../../../assets/images/icons/customIcons/user-loggedin.svg";
-import { ThemeColors } from "@src/utility/context/ThemeColors";
-import axios from "axios";
 
 const Cards = (props) => {
-  const context = useContext(ThemeColors);
-
   return (
     <Fragment>
       <Row>
@@ -83,26 +78,6 @@ const Cards = (props) => {
             </CardBody>
           </Card>
         </Col>
-
-        {/* <Col sm="6" xl="3" md="6">
-          <Card className="card">
-            <CardHeader>
-              <CardTitle className="card_header">
-                <div className="icon_container_4">
-                  <img src={loggedin} alt="" />
-                </div>
-                <h5> User Loged in </h5>
-              </CardTitle>
-            </CardHeader>
-            <CardBody>
-              <CardText>
-                <div className="card_body">
-                  <h3>{props.onlineUsers}</h3>
-                </div>
-              </CardText>
-            </CardBody>
-          </Card>
-        </Col> */}
       </Row>
     </Fragment>
   );

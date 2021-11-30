@@ -199,21 +199,7 @@ const Router = () => {
             );
           }}
         />
-        {/* <Route
-          exact
-          path='/'
-          render={() => {
-            return <Redirect to={DefaultRoute} />
-          }}
-        /> */}
-        {/* Not Auth Route */}
-        {/* <Route
-          exact
-          path='/home'
-          render={()=> {
-            return (auth ? <Redirect to='/home'/> : <Redirect to={DefaultRoute} />)
-          }}
-        /> */}
+
         {ResolveRoutes()}
         {/* NotFound Error page */}
         <Route path="*" component={Error} />

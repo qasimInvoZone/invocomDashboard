@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import Cards from "../views/components/cards/LeadsCard";
-import ChartjsLine from "../views/components/charts/ChartjsLineChart";
 import LeadsTable from "../views/components/TablesAndForms/LeadsTable";
 import axios from "axios";
 import { SocketContext } from "../service/socket";
@@ -16,8 +15,6 @@ const Leads = () => {
   const [isUpdated, setIsUpdated] = useState(false);
   const [leadsData, setleadsData] = useState({});
   const [onlineUsers, setOnlineUser] = useState(0);
-  const [chatsData, setchatsData] = useState({});
-  const [meetingsData, setmeetingsData] = useState({});
 
   useEffect(() => {
     socket.emit("getConnectedUsers");
@@ -53,7 +50,6 @@ const Leads = () => {
     fetchDashboard();
   }, [axios, setleadsData, isUpdated]);
   const changeStatus = async (chatId, status) => {
-    console.log("chatId,status", chatId, status);
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;
     const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION;
     const entity = "chat";
@@ -89,7 +85,7 @@ const Leads = () => {
           onlineUsers={onlineUsers}
         />
       </div>
-      {/* <ChartjsLine chartData = {{total: leadsData?.data?.openLeads, assigned: leadsData?.data?.assignedLeads,pending: leadsData?.data?.pendingLeads}}/> */}
+
       <LeadsTable
         summary={leadsData?.data?.summary}
         changeStatus={changeStatus}
