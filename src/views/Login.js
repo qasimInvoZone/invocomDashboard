@@ -23,12 +23,12 @@ import LoginError from "../views/components/Login-error/Login-error";
 //import { end } from '@popperjs/core'
 
 const Login = ({ history }) => {
-  const _history = useHistory();
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      _history.push("./home");
-    }
-  }, []);
+  // const _history = useHistory();
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     _history.push("./home");
+  //   }
+  // }, []);
 
   const [skin, setSkin] = useSkin();
   const [email, setEmail] = useState("");
@@ -50,7 +50,7 @@ const Login = ({ history }) => {
       .then((response) => {
         localStorage.setItem("token", response.data.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.data.user));
-        _history.push("/home");
+        history.push("/home");
       })
       .catch((err) => {
         setError(err?.response?.data?.message);
