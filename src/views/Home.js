@@ -35,7 +35,6 @@ const Home = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;
-      //console.log('process.env.REACT_APP_INVOCOM_API_URL',process.env.REACT_APP_INVOCOM_API_URL)
       const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION;
       const entity = "dashboard";
       const endPoint = `${baseUrl}/${apiVersion}/${entity}/`;
@@ -49,11 +48,8 @@ const Home = () => {
         setleadsData(response.data);
         setchatsData(response.data);
         setmeetingsData(response.data);
-        console.log("leadsData", leadsData);
       } catch (e) {
-        if (e) {
-          ////
-        }
+        console.log(e);
       }
     };
 
@@ -75,8 +71,6 @@ const Home = () => {
       <Cards
         leadsData={{
           total: leadsData?.data?.totalLeads,
-          // respondedLeads: leadsData?.data?.respondedLeads,
-          // unAssignedLeads: leadsData?.data?.unAssignedLeads,
         }}
         chatsData={{
           total: chatsData?.data?.totalChats,

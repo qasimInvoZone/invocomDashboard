@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
-import { useSkin } from "@hooks/useSkin";
-import { Link, Redirect, useHistory } from "react-router-dom";
-import { Facebook, Twitter, Mail, GitHub } from "react-feather";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import InputPasswordToggle from "@components/input-password-toggle";
 import {
   Row,
@@ -23,10 +21,8 @@ import LoginError from "../views/components/Login-error/Login-error";
 //import { end } from '@popperjs/core'
 
 const Login = ({ history }) => {
-  const [skin, setSkin] = useSkin();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [success, setSuccess] = useState("");
   const [errors, setError] = useState([]);
   const [hasError, setHasError] = useState(false);
 

@@ -1,6 +1,6 @@
 // ** React Imports
 import { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // ** Custom Components
 import Avatar from "@components/avatar";
@@ -19,17 +19,6 @@ import {
   DropdownToggle,
   DropdownItem,
 } from "reactstrap";
-import {
-  User,
-  Mail,
-  CheckSquare,
-  MessageSquare,
-  Search,
-  CreditCard,
-  HelpCircle,
-  ArrowDownCircle,
-  Power,
-} from "react-feather";
 
 // ** Default Avatar Image
 import TempUser from "../../../../assets/images/avatars/user.png";
