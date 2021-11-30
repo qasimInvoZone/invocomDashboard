@@ -18,6 +18,8 @@ const Home = () => {
   const [username, setUsername] = useState("");
   const [role, setRole] = useState("");
   const [onlineUsers, setOnlineUser] = useState(0);
+  const [chatsData, setchatsData] = useState({});
+  const [meetingsData, setmeetingsData] = useState({});
 
   useEffect(() => {
     socket.emit("getConnectedUsers");
@@ -45,6 +47,8 @@ const Home = () => {
           },
         });
         setleadsData(response.data);
+        setchatsData(response.data);
+        setmeetingsData(response.data);
         console.log("leadsData", leadsData);
       } catch (e) {
         if (e) {
@@ -71,8 +75,14 @@ const Home = () => {
       <Cards
         leadsData={{
           total: leadsData?.data?.totalLeads,
-          respondedLeads: leadsData?.data?.respondedLeads,
-          unAssignedLeads: leadsData?.data?.unAssignedLeads,
+          // respondedLeads: leadsData?.data?.respondedLeads,
+          // unAssignedLeads: leadsData?.data?.unAssignedLeads,
+        }}
+        chatsData={{
+          total: chatsData?.data?.totalChats,
+        }}
+        meetingsData={{
+          total: meetingsData?.data?.totalMeetings,
         }}
         onlineUsers={onlineUsers}
       />

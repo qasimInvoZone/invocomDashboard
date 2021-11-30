@@ -28,7 +28,6 @@ const Router = () => {
   const [transition, setTransition] = useRouterTransition();
   useEffect(() => {
     setAuth(localStorage.getItem("token"));
-    console.log("token", auth);
   }, [auth]);
   // ** ACL Ability Context
   const ability = useContext(AbilityContext);

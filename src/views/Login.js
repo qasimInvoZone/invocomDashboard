@@ -23,13 +23,6 @@ import LoginError from "../views/components/Login-error/Login-error";
 //import { end } from '@popperjs/core'
 
 const Login = ({ history }) => {
-  // const _history = useHistory();
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     _history.push("./home");
-  //   }
-  // }, []);
-
   const [skin, setSkin] = useSkin();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
