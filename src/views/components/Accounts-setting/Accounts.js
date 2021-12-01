@@ -33,6 +33,7 @@ const Accounts = () => {
                     })
                     if(response.status == 200){
                         localStorage.clear();
+                        
                         history.push('/login');
                         //show snackBar success
                     }
@@ -59,7 +60,6 @@ const Accounts = () => {
                 }
                 })
                 if(response.status == 200){
-                    console.log(response)
                     const tempUser = JSON.parse(localStorage.getItem('user'));
                     tempUser.email = response.data.user.email;
                     tempUser.fullname = response.data.user.fullname;
