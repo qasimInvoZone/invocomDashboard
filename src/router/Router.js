@@ -172,18 +172,9 @@ const Router = () => {
             </Switch>
           </LayoutTag>
         </Route>
-      );
-    });
-  };
-  const isLoggedIn = () => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  console.log("auth:", auth);
+      )
+    })
+  }
   return (
     <AppRouter basename={process.env.REACT_APP_BASENAME}>
       <Switch>

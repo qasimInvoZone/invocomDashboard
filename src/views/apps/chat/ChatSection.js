@@ -50,16 +50,18 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         { chatId },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        if(response.status == 200){
+          setIsAssigned(true);
         }
-      );
-      if (response.status == 200) {
-        setIsAssigned(true);
+        
+        // eslint-disable-next-line no-undef
+        
+      } catch (error) {
+        console.log(error)
       }
-
-      // eslint-disable-next-line no-undef
-    } catch (e) {}
   };
   const fetchAdmins = async () => {
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;

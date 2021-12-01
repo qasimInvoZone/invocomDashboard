@@ -57,7 +57,6 @@ const NotificationDropdown = () => {
       >
         <div>
           {notifications?.length > 0 && notifications.map((item, index) => {
-            console.log("item,index",item,index);
           return (
             <div key={index} className='d-flex' onClick={() => removeNotification(index,item)}>
               <Media

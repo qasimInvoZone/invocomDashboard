@@ -23,11 +23,7 @@ const Leads = () => {
       setOnlineUser(data);
     });
 
-    socket.on("connectedUsers", (data) => {
-      setOnlineUser(data);
-    });
-  }, [socket, setOnlineUser]);
-  //fetch token from localStorage
+  }, [socket, setOnlineUser])
   useEffect(() => {
     const fetchDashboard = async () => {
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;
@@ -46,30 +42,26 @@ const Leads = () => {
         if (e && e?.response && e?.response?.status === 400) {
         }
       }
-    };
-    fetchDashboard();
-  }, [axios, setleadsData, isUpdated]);
-  const changeStatus = async (chatId, status) => {
-    const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;
-    const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION;
-    const entity = "chat";
-    const endPoint = `${baseUrl}/${apiVersion}/${entity}/status-update`;
-    const token = localStorage.getItem("token");
-    try {
-      const response = await axios.post(
-        endPoint,
-        { chatId, status },
+    }
+    fetchDashboard()
+  }, [axios, setleadsData,isUpdated])
+  const changeStatus = async (chatId,status) => {
+    const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
+      const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
+      const entity = 'chat'
+      const endPoint = `${baseUrl}/${apiVersion}/${entity}/status-update`
+      const token = localStorage.getItem('token');
+      try {
+        const response = await axios.post(endPoint,{chatId, status},
         {
           headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setIsUpdated(!isUpdated);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        setIsUpdated(!isUpdated);
+      } catch (e) {
+      }
+  }
   return (
     <div className="p-2 bg-white mt-1">
       <h2 className="m-2">

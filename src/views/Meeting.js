@@ -1,12 +1,9 @@
-import {useState, useEffect, useContext} from 'react'
+import {useState, useEffect } from 'react'
 import MeetingHeadCards from './components/cards/MeetinHeadCards'
 import MeetTable from './components/TablesAndForms/MeetingTable'
-import CardMeetup from './components/cards/CardMeetup'
-import CalenderComplete from './components/charts/MeetCompHeader'
 import MeetCardSwiper from './components/Swiper/MeetCardSwiper'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-//import { SocketContext } from '../service/socket' 
 const Meeting = () => {
 
   const history = useHistory()
@@ -14,23 +11,8 @@ const Meeting = () => {
   if(!token){
     history.push('/login');
   }
-  //const socket = useContext(SocketContext);
+
   const [meetingData, setMeetingData] = useState({});
-  //const [onlineUsers, setOnlineUser] = useState(0)
-
-  // useEffect(() => {
-  //   socket.emit('getConnectedUsers');
-
-  //   socket.on('returnConnectedUsers', (data) => {
-  //     setOnlineUser(data);
-  //   })
-
-  //   socket.on('connectedUsers', (data) => {
-  //     setOnlineUser(data)
-  //   })
-
-  // }, [socket, setOnlineUser])
-  //fetch token from localStorage
   useEffect(() => {
     const fetchMeetings = async () => {
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL

@@ -1,10 +1,7 @@
-// ** React Imports
 import { useState, useEffect, useContext } from 'react'
 import { useHistory }from 'react-router-dom';
-import { Menu } from 'react-feather'
 import Sidebar from './SidebarLeft'
 import ChatSection from './ChatSection'
-import UserProfileSidebar from './UserProfileSidebar'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { SocketContext } from '../../../service/socket'
@@ -15,7 +12,6 @@ import '@styles/base/pages/app-chat.scss'
 import '@styles/base/pages/app-chat-list.scss'
 
 const user = JSON.parse(localStorage.getItem('user'))
-const token = localStorage.getItem('token')
 
 const AppChat = () => {
 
@@ -42,7 +38,6 @@ const AppChat = () => {
           if (JSON.stringify(prevData.chats[i]._id) == JSON.stringify(updatedChat._id)) {
             prevData.chats.splice(i, 1)
             prevData.chats.unshift(updatedChat)
-            //localStorage.setItem("cachedChats", JSON.stringify(prevChat))
             return {
               chats: prevData.chats,
               filteredChat: (JSON.stringify(prevData.filteredChat._id) != JSON.stringify(updatedChat._id)) ? prevData.filteredChat : prevData.chats[0]
@@ -66,7 +61,6 @@ const AppChat = () => {
           if (JSON.stringify(prevData.chats[i]._id) == JSON.stringify(updatedChat._id)) {
             prevData.chats.splice(i, 1)
             prevData.chats.unshift(updatedChat)
-            //localStorage.setItem("cachedChats", JSON.stringify(prevChats))
             return {
               chats: prevData.chats,
               filteredChat: updatedChat
@@ -99,7 +93,6 @@ const AppChat = () => {
         const response = await axios.get(endPoint, options)
         if (response.status === 200) {
           const chats = response.data.data.chats
-          //localStorage.setItem("cachedChats", JSON.stringify(chats))
           setData({chats: chats, filteredChat: chats[0]})        
         } 
       } catch (e) {
@@ -120,7 +113,6 @@ const AppChat = () => {
   async function renderChat(chatId) {
     for (let i = 0; i < data.chats.length; i++) {
       if (JSON.stringify(data.chats[i]._id) == JSON.stringify(chatId)) {
-        // WE NEED TO MAKE API CALL HERE TO BE ABLE TO SET CHAT_UNREAD_MESSAGES_COUNT = 0
         if(data.chats[i].unReadMessages > 0){
           data.chats[i].unReadMessages = 0 
           const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
@@ -167,7 +159,6 @@ const AppChat = () => {
       try {
         const response = await axios.post(endPoint, {message, chatId}, options)
         if (response.status === 200) {
-          //renderChat(chatId)
           let newMessage = response.data.data.newMessage
 
           setData(prevData => {

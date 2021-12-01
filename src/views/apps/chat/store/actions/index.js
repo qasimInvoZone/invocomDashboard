@@ -12,7 +12,6 @@ export const getUserProfile = () => {
   };
 };
 
-// ** Get Chats & Contacts
 export const getChatContacts = () => {
   return (dispatch) => {
     axios.get("/apps/chat/chats-and-contacts").then((res) => {
