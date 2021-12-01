@@ -4,7 +4,6 @@ import { Delete, Smile, Send } from "react-feather";
 import Modal from "./ChatModal";
 import axios from "axios";
 import Picker from "emoji-picker-react";
-import { useLocation } from "react-router-dom";
 var moment = require("moment");
 //dummy
 
@@ -50,18 +49,19 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         { chatId },
         {
           headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        })
-        if(response.status == 200){
-          setIsAssigned(true);
+            Authorization: `Bearer ${token}`,
+          },
         }
-        
-        // eslint-disable-next-line no-undef
-        
-      } catch (error) {
-        console.log(error)
+      );
+      console.log(response);
+      if (response.status == 200) {
+        setIsAssigned(true);
       }
+
+      // eslint-disable-next-line no-undef
+    } catch (error) {
+      console.log(error);
+    }
   };
   const fetchAdmins = async () => {
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;
@@ -115,7 +115,6 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   return (
     <>
       <div>{showModal ? <Modal admins={admins} chatId={chat._id} /> : ""}</div>
-
       <div className="complete_right_side">
         <div>
           <div className="headRight-sub">
