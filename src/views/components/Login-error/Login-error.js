@@ -10,7 +10,6 @@ const LoginError = ({errors}) => {
     <div className='error-wrapper'>
         {
              errors.length > 0 && errors.map(error => (
-                //  console log(error)
                 <p className="text-danger"> { error }</p>
               ))
             }

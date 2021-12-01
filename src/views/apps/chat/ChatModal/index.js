@@ -1,14 +1,10 @@
 import { useState } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, FormGroup, Input,UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, FormGroup } from 'reactstrap'
 import axios from 'axios'
-import { useHistory, useLocation } from 'react-router-dom';
 const ModalForm = (props) => {
-  console.log("admin props",props);
   const [formModal, setFormModal] = useState(true)
   const [assignee, setAssignee] = useState({})
   const [isAssignee, setIsAssignee] = useState(false)
-  const history = useHistory();
-  const location = useLocation();
   const assignChat = async () => {
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
       const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
@@ -41,7 +37,6 @@ const ModalForm = (props) => {
     
   }
   const renderAdmins = (admins) => {
-    console.log("ADMINS :::::: ",admins);
     return admins.map((admin)=>{
       return <option onClick={()=>{setAssignee(admin)}}>{admin.email}</option>
     })

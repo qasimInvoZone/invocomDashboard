@@ -1,6 +1,5 @@
 import {useState, useEffect, useContext} from 'react'
 import Cards from '../views/components/cards'
-import ChartjsLine from '../views/components/charts/ChartjsLineChart' 
 import LeadsTable from '../views/components/TablesAndForms/LeadsTable'
 import axios from 'axios'
 import { SocketContext } from '../service/socket' 
@@ -30,7 +29,6 @@ const Leads = () => {
     })
 
   }, [socket, setOnlineUser])
-  //fetch token from localStorage
   useEffect(() => {
     const fetchDashboard = async () => {
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
@@ -55,7 +53,6 @@ const Leads = () => {
     fetchDashboard()
   }, [axios, setleadsData,isUpdated])
   const changeStatus = async (chatId,status) => {
-    console.log("chatId,status",chatId,status);
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
       const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
       const entity = 'chat'
@@ -70,7 +67,6 @@ const Leads = () => {
         })
         setIsUpdated(!isUpdated);
       } catch (e) {
-        console.log(e);
       }
   }
   return (

@@ -18,7 +18,6 @@ const ChartjsRadarChart = ({ tooltipShadow, successColorShade, warningLightColor
             return output
           }
         },
-        // Updated default tooltip UI
         shadowOffsetX: 1,
         shadowOffsetY: 1,
         shadowBlur: 8,

@@ -1,4 +1,4 @@
-// import MeetingHeadCards from './components/cards/MeetinHeadCards'
+
 import AnalyticalChart from './components/charts/AnalyticalChart'
 import AnalyticalCardHolder from './components/AnalyticalPageBottom/AnalyticalCardHolder'
 const Analytics = () => {

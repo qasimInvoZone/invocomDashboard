@@ -22,9 +22,6 @@ const Accounts = () => {
             })
             if(response.status == 200){
                 //show snackBar success
-                console.log(response.status)
-                console.log("response", response);
-                console.log("user", localStorage.getItem('user'));
             }
             
 

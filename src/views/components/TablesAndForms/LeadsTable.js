@@ -2,12 +2,9 @@
 import avatar1 from '@src/assets/images/portrait/small/avatar-s-5.jpg'
 import avatar2 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
 import avatar3 from '@src/assets/images/portrait/small/avatar-s-7.jpg'
-import { MoreVertical, Edit, Trash } from 'react-feather'
+import { MoreVertical } from 'react-feather'
 import { Table, Badge, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { useHistory } from 'react-router-dom'
-
+import React, { useState } from 'react'
 var moment = require('moment');
 moment().format();
 const avatarGroupData1 = [
@@ -98,7 +95,6 @@ const TableHover = (props) => {
 
   const [filterStatus, setFilterStatus] = useState('OPEN');
   const renderSummary = (leadsData) => {
-    console.log("leads Data ::::::: ",leadsData);
     let result = leadsData?.filter(leadStatus => leadStatus.STATUS == filterStatus);
 
     return result?.map((lead)=>{
@@ -166,26 +162,6 @@ const TableHover = (props) => {
     </tr>
     })
   }
-  // const changeStatus = async (chatId,status) => {
-  //   console.log("chatId,status",chatId,status);
-  //   const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
-  //     const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
-  //     const entity = 'chat'
-  //     const endPoint = `${baseUrl}/${apiVersion}/${entity}/status-update`
-  //     const token = localStorage.getItem('token');
-  //     try {
-  //       const response = await axios.post(endPoint,{chatId, status},
-  //       {
-  //         headers: {
-  //           'Authorization': `Bearer ${token}`
-  //         }
-  //       })
-  //       setIsStatusUpdate(true);
-  //       history.push("/leads")
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  // }
   return (
 
     <div className="complete_table">

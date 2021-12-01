@@ -1,18 +1,14 @@
 import React, { useEffect, useState, useRef } from "react"
 import User1 from "../../../assets/images/avatars/demo_user.png"
-import { RefreshCw, Delete, Smile, Send } from "react-feather"
-import { Button } from "bootstrap"
+import { Delete, Smile, Send } from "react-feather"
 import Modal from './ChatModal'
 import axios from 'axios'
 import Picker from 'emoji-picker-react';
-import { useHistory, useLocation, Link } from 'react-router-dom';
 var moment = require('moment');
-//dummy
 
 const ChatSection = ({ chat, sendMessageParent }) => {
   const messagesEndRef = useRef(null)
 
-  const location = useLocation();
   const [user, setUser] = useState({})
   const [isAssigned, setIsAssigned] = useState(false)
   const [message, setMessage] = useState('')
@@ -51,13 +47,9 @@ const ChatSection = ({ chat, sendMessageParent }) => {
             'Authorization': `Bearer ${token}`
           }
         })
-        console.log("before",isAssigned)
-        console.log("response.status",response.status)
         if(response.status == 200){
-          console.log("Middle if",isAssigned, response.status)
           setIsAssigned(true);
         }
-        console.log("afterrrr :::: ",isAssigned)
         
         // eslint-disable-next-line no-undef
         
@@ -80,7 +72,6 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         }
       })
       setAdmins(response.data.adminUsers);
-      console.log(response.data.adminUsers);
       if(response.status == 200){
         setShowModal(!showModal);
       }
@@ -104,7 +95,6 @@ const ChatSection = ({ chat, sendMessageParent }) => {
       const endPoint = `${baseUrl}/${apiVersion}/${entity}/status-update`
       const token = localStorage.getItem('token');
       const chatId = chat._id;
-      console.log("chatId, token",chatId, token)
       const status = "CLOSED"
       try {
         const response = await axios.post(endPoint,{chatId,status},
@@ -115,7 +105,6 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         })
 
       } catch (e) {
-        console.log(e);
       }
   }
   return (

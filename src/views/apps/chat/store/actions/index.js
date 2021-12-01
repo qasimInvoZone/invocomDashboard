@@ -1,6 +1,4 @@
 import axios from 'axios'
-
-// ** Get User Profile
 export const getUserProfile = () => {
   return dispatch => {
     return axios.get('/apps/chat/users/profile-user').then(res => {
@@ -12,7 +10,6 @@ export const getUserProfile = () => {
   }
 }
 
-// ** Get Chats & Contacts
 export const getChatContacts = () => {
   return dispatch => {
     axios.get('/apps/chat/chats-and-contacts').then(res => {
@@ -24,7 +21,6 @@ export const getChatContacts = () => {
   }
 }
 
-// ** Select Chat
 export const selectChat = id => {
   return dispatch => {
     axios.get('/apps/chat/get-chat', { id }).then(res => {
@@ -34,7 +30,6 @@ export const selectChat = id => {
   }
 }
 
-// ** Send Msg
 export const sendMsg = obj => {
   return dispatch => {
     axios.post('/apps/chat/send-msg', { obj }).then(res => {

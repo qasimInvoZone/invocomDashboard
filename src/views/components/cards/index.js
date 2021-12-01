@@ -8,27 +8,6 @@ import { ThemeColors } from '@src/utility/context/ThemeColors'
 import axios from 'axios'
 
 const Cards = (props) => {
-  // const [leadsData, setleadsData] = useState({});
-  // //fetch token from localStorage
-  // useEffect(() => {
-  //   const fetchLeadsData = async () => {
-  //     const response = await axios.get(''); // axois call
-  //     /*
-  //       axios.post('https://example.com/postSomething', {
-  //         {body}
-  //       },
-  //       {
-  //         headers: {
-  //           Authorization: 'Bearer ' + token
-  //           'Content-Type': 'application/json'
-  //         }
-  //       })
-  //     */
-  //     const data = response.json();
-  //     setleadsData(data);
-  //   };
-  //   fetchLeadsData();
-  // }, []);
   const context = useContext(ThemeColors)
 
   return (

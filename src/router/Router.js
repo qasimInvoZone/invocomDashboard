@@ -32,7 +32,6 @@ const Router = () => {
 
   useEffect(() => {
     setAuth(localStorage.getItem('token'));
-    console.log('token',auth)
   }, [auth]);
 
   // ** ACL Ability Context
@@ -193,15 +192,6 @@ const Router = () => {
       )
     })
   }
-  const isLoggedIn = () => {
-    const token  = localStorage.getItem('token');
-     if(token){
-       return true;
-     } else {
-       return false;
-     }
-  }
-  console.log("auth:", auth);
   return (
     <AppRouter basename={process.env.REACT_APP_BASENAME}>
       <Switch>

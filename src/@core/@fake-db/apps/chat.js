@@ -204,10 +204,7 @@ const data = {
     }
   ]
 }
-/*eslint-enable */
-// ------------------------------------------------
-// GET: Return Chats Contacts and Contacts
-// ------------------------------------------------
+
 mock.onGet('/apps/chat/chats-and-contacts').reply(() => {
   const chatsContacts = data.chats.map(chat => {
     const contact = data.contacts.find(c => c.id === chat.userId)

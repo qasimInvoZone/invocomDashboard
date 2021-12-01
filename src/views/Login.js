@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useSkin } from '@hooks/useSkin'
-import { Link, Redirect } from 'react-router-dom'
-import { Facebook, Twitter, Mail, GitHub } from 'react-feather'
+import { Link } from 'react-router-dom'
 import InputPasswordToggle from '@components/input-password-toggle'
 import { Row, Col, CardTitle, CardText, Form, FormGroup, Label, Input, CustomInput, Button } from 'reactstrap'
 import '@styles/base/pages/page-auth.scss'
@@ -9,18 +8,13 @@ import Bot from '../assets/images/loginpicture.png'
 import logo from '../assets/images/logo/invocom.png'
 import axios from 'axios'
 import LoginError from '../views/components/Login-error/Login-error'
-//import { end } from '@popperjs/core'
 
 const Login = ({ history }) => {
-  const [skin, setSkin] = useSkin()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [success, setSuccess] = useState('')
   const [errors, setError] = useState([])
   const [hasError, setHasError] = useState(false)
   
-  // const illustration = skin === 'dark' ? 'login-v2-dark.svg' : 'login-v2.svg',
-  //   source = require(`@src/assets/images/pages/${illustration}`).default
   const login = async () => {
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
     const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION

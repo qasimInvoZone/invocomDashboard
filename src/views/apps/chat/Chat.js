@@ -1,9 +1,6 @@
-// ** React Imports
-import { useState, useEffect, useRef } from 'react'
-import ReactDOM from 'react-dom'
-import { Search, RefreshCw, Delete } from 'react-feather'
+
+import { RefreshCw, Delete } from 'react-feather'
 import User1 from '../../../assets/images/avatars/12-small.png'
-// ** Custom Components
 const ChatLog = () => {
 
   return (

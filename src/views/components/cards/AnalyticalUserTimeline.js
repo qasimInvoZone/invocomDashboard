@@ -1,15 +1,6 @@
-// ** Custom Components
-import Avatar from '@components/avatar'
 import Timeline from '@components/timeline'
-
-// ** Images
-import ceo from '@src/assets/images/avatars/12-small.png'
-import pdf from '@src/assets/images/icons/file-icons/pdf.png'
-
-// ** Third Party Components
 import { Card, CardHeader, CardTitle, CardBody, Media } from 'reactstrap'
 
-// ** Timeline Data
 const data = [
   {
     title: 'Web Development',
