@@ -33,7 +33,6 @@ const Accounts = () => {
                     })
                     if(response.status == 200){
                         localStorage.clear();
-                        
                         history.push('/login');
                         //show snackBar success
                     }
