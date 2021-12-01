@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardTitle, CardBody } from 'reactstrap'
 
 // eslint-disable-next-line no-duplicate-imports
-import { Table, Badge, UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import { Table } from 'reactstrap'
 const ChartjsRadarChart = () => {
 
   return (

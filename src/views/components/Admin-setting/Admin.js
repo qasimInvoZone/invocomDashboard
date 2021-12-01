@@ -44,9 +44,6 @@ const Admin = () => {
 
     const handleCloseRemove = () => setShowRemove(false);
     const handleShowRemove = () => setShowRemove(true);
-
-    
-    //POST /api/v1/user/register/admin username,fullname,password,role=ADMIN, email
     const registerAdmin = async () => {
       const token = localStorage.getItem('token');      
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL

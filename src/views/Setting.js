@@ -1,10 +1,8 @@
 
-import React, { Fragment } from 'react'
-import { Row, Col, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
-import { MessageCircle, User, Bell,Users, Edit2,MessageSquare } from 'react-feather'
+import React from 'react'
+import { Row, Col } from 'reactstrap'
+import { MessageCircle, User, Users } from 'react-feather'
 import {Tab, Nav} from 'react-bootstrap'
-import ArrowBottom from '../assets/images/icons/customIcons/arrowbottom.svg'
-import Button from 'reactstrap/lib/Button'
 import LiveChat from '../views/components/LiveChat/LiveChat'
 import Accounts from '../views/components/Accounts-setting/Accounts'
 import Notification from '../views/components/Notification-setting/Notification'
@@ -44,12 +42,6 @@ const Setting = () => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="nav-item-wrapper">
-          {/* <Nav.Link className="nav-link-wrapper" eventKey="third">
-          <div className="setting_live_chat">
-                                <Bell />
-                                Notifications
-                            </div>
-          </Nav.Link> */}
         </Nav.Item>
         <p className="personal-wrapper">General</p>
         <Nav.Item className="nav-item-wrapper">

@@ -30,7 +30,6 @@ const AnalyticalChart = ({
         mode: 'label'
       },
       tooltips: {
-        // Updated default tooltip UI
         shadowOffsetX: 1,
         shadowOffsetY: 1,
         shadowBlur: 8,
@@ -174,8 +173,6 @@ const AnalyticalChart = ({
         }
       ]
     }
-
-  //** To add spacing between legends and chart
   const plugins = [
     {
       beforeInit(chart) {

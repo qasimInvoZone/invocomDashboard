@@ -1,17 +1,9 @@
 // ** React Imports
 import User1 from '../../../assets/images/avatars/demo_user.png'
-import User2 from '../../../assets/images/avatars/3-small.png'
-import User3 from '../../../assets/images/avatars/10-small.png'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import ChartjsLineChart from '../../components/charts/ChartjsLineChart'
-import Arrow from '../../../assets/images/icons/customIcons/arrowbottom.svg'
-import { Search, Link } from 'react-feather'
-import FilterSideBar from './ChatDropDowns/filterSideBar'
+import { Search } from 'react-feather'
 import { useHistory } from 'react-router-dom'
-  
-
-// import User3 from '../../../assets/images/portrait/avatar-s-3.jpg'
 const SidebarLeft = ({ renderChatParent, chats }) => {
   const history = useHistory()
   const token = localStorage.getItem('token');
