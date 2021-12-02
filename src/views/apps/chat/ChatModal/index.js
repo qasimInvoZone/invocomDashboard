@@ -61,7 +61,7 @@ const ModalForm = (props) => {
             <Label for="email">Email:</Label>
             <div className="notification-dropdown-chatHistory">
               <select onChange={(event) => setAssignee(event.target.value)}>
-                {/* <option value="">Select Admin</option> */}
+                <option value="">Select Admin</option>
                 {renderAdmins(props.admins)}
               </select>
             </div>
