@@ -219,7 +219,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                     <Send size={18} />
                   </button>
                 </div>
-              ) : (
+              ) : user?.role === "SUPER_ADMIN" ? (
                 <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
                   <div>
                     This conversation is not assigned to you. In order to write
@@ -240,6 +240,18 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                     >
                       <strong>Assign</strong>
                     </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
+                  <div
+                    style={{
+                      width: "100%",
+                      textAlign: "center",
+                    }}
+                  >
+                    This conversation is <strong>Moved to PENDING</strong> By
+                    Super Admin
                   </div>
                 </div>
               )
