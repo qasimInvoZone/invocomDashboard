@@ -4,7 +4,6 @@ import { Delete, Smile, Send } from "react-feather";
 import Modal from "./ChatModal";
 import axios from "axios";
 import Picker from "emoji-picker-react";
-import { useLocation } from "react-router-dom";
 var moment = require("moment");
 //dummy
 
@@ -50,18 +49,19 @@ const ChatSection = ({ chat, sendMessageParent }) => {
         { chatId },
         {
           headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        })
-        if(response.status == 200){
-          setIsAssigned(true);
+            Authorization: `Bearer ${token}`,
+          },
         }
-        
-        // eslint-disable-next-line no-undef
-        
-      } catch (error) {
-        console.log(error)
+      );
+      console.log(response);
+      if (response.status == 200) {
+        setIsAssigned(true);
       }
+
+      // eslint-disable-next-line no-undef
+    } catch (error) {
+      console.log(error);
+    }
   };
   const fetchAdmins = async () => {
     const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;
@@ -115,7 +115,6 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   return (
     <>
       <div>{showModal ? <Modal admins={admins} chatId={chat._id} /> : ""}</div>
-
       <div className="complete_right_side">
         <div>
           <div className="headRight-sub">
@@ -220,7 +219,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                     <Send size={18} />
                   </button>
                 </div>
-              ) : (
+              ) : user?.role === "SUPER_ADMIN" ? (
                 <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
                   <div>
                     This conversation is not assigned to you. In order to write
@@ -241,6 +240,18 @@ const ChatSection = ({ chat, sendMessageParent }) => {
                     >
                       <strong>Assign</strong>
                     </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="d-flex align-items-center justify-content-between right-section-bottom-restrict">
+                  <div
+                    style={{
+                      width: "100%",
+                      textAlign: "center",
+                    }}
+                  >
+                    This conversation is <strong>Moved to PENDING</strong> By
+                    Super Admin
                   </div>
                 </div>
               )
