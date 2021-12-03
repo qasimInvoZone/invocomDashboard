@@ -15,13 +15,14 @@ const Accounts = () => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
     const [emailError, setEmailError] = useState('')
+    const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
+    const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
     useEffect(()=>{
 
     },[errorMessage,password,confirmPassword])
     const updateUserPassword = async () => {
         if(password === confirmPassword && validate(password)){
-                const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
-                const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
+                
                 const entity = 'user'
                 const token = localStorage.getItem('token');
                 const endPoint = `${baseUrl}/${apiVersion}/${entity}/update-password `
@@ -47,8 +48,6 @@ const Accounts = () => {
     }
     const updateUserNameAndEmail = async () => {
         if(emailError == ''){
-            const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
-            const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
             const entity = 'user'
             const token = localStorage.getItem('token');
             const endPoint = `${baseUrl}/${apiVersion}/${entity}/update-profile`
