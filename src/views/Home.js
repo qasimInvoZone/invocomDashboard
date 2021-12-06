@@ -74,7 +74,6 @@ const Home = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response);
         if (response.status == 200) {
           setAdmins(response.data.adminUsers);
         }

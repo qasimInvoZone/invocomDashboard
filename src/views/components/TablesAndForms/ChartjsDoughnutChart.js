@@ -7,19 +7,21 @@ const ChartjsRadarChart = (props) => {
     return admins.map((adminUser) => {
       let chats = adminUser.chats;
       const Visitors = chats.map((chat) => {
-        return <span className="badge badge-dark">{chat.client.fullname}</span>;
+        return (
+          <span className="badge badge-info mr-1 mb-1">
+            {chat.client.fullname}
+          </span>
+        );
       });
       return (
         <>
           <tr>
             <td>{Visitors}</td>
             <td>
-              <span className="badge badge-info">
-                {adminUser.admin.fullname}
-              </span>
+              <span>{adminUser.admin.fullname}</span>
             </td>
             <td>
-              <span className="badge badge-dark">{adminUser.chats.length}</span>
+              <span>{adminUser.chats.length}</span>
             </td>
           </tr>
         </>
@@ -35,7 +37,7 @@ const ChartjsRadarChart = (props) => {
         <Table borderless responsive>
           <thead>
             <tr>
-              <th>Visitors</th>
+              <th>Clients</th>
               <th>Admins</th>
               <th>Chats</th>
             </tr>
