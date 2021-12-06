@@ -7,11 +7,17 @@ import axios from "axios";
 import { SocketContext } from "../service/socket";
 import { useHistory } from "react-router-dom";
 const Home = () => {
+  const [admins, setAdmins] = useState([]);
+  const [user, setUser] = useState({});
   const history = useHistory();
   const token = localStorage.getItem("token");
   if (!token) {
     history.push("/login");
   }
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setUser(user);
+  }, [setUser]);
   const socket = useContext(SocketContext);
 
   const [leadsData, setleadsData] = useState({});
@@ -32,6 +38,7 @@ const Home = () => {
       setOnlineUser(data);
     });
   }, [socket, setOnlineUser]);
+
   useEffect(() => {
     const fetchDashboard = async () => {
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;
@@ -54,6 +61,30 @@ const Home = () => {
     };
 
     fetchDashboard();
+
+    const fetchAdmins = async () => {
+      const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;
+      const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION;
+      const entity = "user";
+      const endPoint = `${baseUrl}/${apiVersion}/${entity}/admin-users`;
+      const token = localStorage.getItem("token");
+      try {
+        const response = await axios.get(endPoint, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(response);
+        if (response.status == 200) {
+          setAdmins(response.data.adminUsers);
+        }
+      } catch (e) {
+        if (e && e?.response && e?.response?.status === 400) {
+          console.log(e);
+        }
+      }
+    };
+    fetchAdmins();
 
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
@@ -92,7 +123,7 @@ const Home = () => {
           />
         </div>
         <div className="pie_chart">
-          <PieChart />
+          {user?.role === "SUPER_ADMIN" ? <PieChart admins={admins} /> : ""}
         </div>
       </div>
       <DashboardStats
