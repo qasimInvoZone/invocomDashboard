@@ -112,7 +112,10 @@ const Home = () => {
       />
 
       <div className="chart_container">
-        <div className="chart_home">
+        <div className="pie_chart">
+          {user?.role === "SUPER_ADMIN" ? <PieChart admins={admins} /> : ""}
+        </div>
+        <div className="pie_chart">
           <Chart
             leadsData={{
               total: leadsData?.data?.totalLeads,
@@ -120,9 +123,6 @@ const Home = () => {
               unAssignedLeads: leadsData?.data?.unAssignedLeads,
             }}
           />
-        </div>
-        <div className="pie_chart">
-          {user?.role === "SUPER_ADMIN" ? <PieChart admins={admins} /> : ""}
         </div>
       </div>
       <DashboardStats

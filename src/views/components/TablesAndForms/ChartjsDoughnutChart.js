@@ -16,7 +16,7 @@ const ChartjsRadarChart = (props) => {
       return (
         <>
           <tr>
-            <td>{Visitors}</td>
+            <td style={{ maxHeight: "40px" }}>{Visitors}</td>
             <td>
               <span>{adminUser.admin.fullname}</span>
             </td>
