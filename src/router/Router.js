@@ -172,9 +172,9 @@ const Router = () => {
             </Switch>
           </LayoutTag>
         </Route>
-      )
-    })
-  }
+      );
+    });
+  };
   return (
     <AppRouter basename={process.env.REACT_APP_BASENAME}>
       <Switch>

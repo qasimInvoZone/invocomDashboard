@@ -7,11 +7,17 @@ import axios from "axios";
 import { SocketContext } from "../service/socket";
 import { useHistory } from "react-router-dom";
 const Home = () => {
+  const [admins, setAdmins] = useState([]);
+  const [user, setUser] = useState({});
   const history = useHistory();
   const token = localStorage.getItem("token");
   if (!token) {
     history.push("/login");
   }
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setUser(user);
+  }, [setUser]);
   const socket = useContext(SocketContext);
 
   const [leadsData, setleadsData] = useState({});
@@ -32,6 +38,7 @@ const Home = () => {
       setOnlineUser(data);
     });
   }, [socket, setOnlineUser]);
+
   useEffect(() => {
     const fetchDashboard = async () => {
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;
@@ -45,15 +52,38 @@ const Home = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setleadsData(response.data);
-        setchatsData(response.data);
-        setmeetingsData(response.data);
+        setleadsData(await response.data);
+        setchatsData(await response.data);
+        setmeetingsData(await response.data);
       } catch (e) {
         console.log(e);
       }
     };
 
     fetchDashboard();
+
+    const fetchAdmins = async () => {
+      const baseUrl = process.env.REACT_APP_INVOCOM_API_URL;
+      const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION;
+      const entity = "user";
+      const endPoint = `${baseUrl}/${apiVersion}/${entity}/admin-users`;
+      const token = localStorage.getItem("token");
+      try {
+        const response = await axios.get(endPoint, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (response.status == 200) {
+          setAdmins(await response.data.adminUsers);
+        }
+      } catch (e) {
+        if (e && e?.response && e?.response?.status === 400) {
+          console.log(e);
+        }
+      }
+    };
+    fetchAdmins();
 
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
@@ -82,7 +112,10 @@ const Home = () => {
       />
 
       <div className="chart_container">
-        <div className="chart_home">
+        <div className="pie_chart">
+          {user?.role === "SUPER_ADMIN" ? <PieChart admins={admins} /> : ""}
+        </div>
+        <div className="pie_chart">
           <Chart
             leadsData={{
               total: leadsData?.data?.totalLeads,
@@ -90,9 +123,6 @@ const Home = () => {
               unAssignedLeads: leadsData?.data?.unAssignedLeads,
             }}
           />
-        </div>
-        <div className="pie_chart">
-          <PieChart />
         </div>
       </div>
       <DashboardStats
