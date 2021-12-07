@@ -52,9 +52,9 @@ const Home = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setleadsData(response.data);
-        setchatsData(response.data);
-        setmeetingsData(response.data);
+        setleadsData(await response.data);
+        setchatsData(await response.data);
+        setmeetingsData(await response.data);
       } catch (e) {
         console.log(e);
       }
@@ -75,7 +75,7 @@ const Home = () => {
           },
         });
         if (response.status == 200) {
-          setAdmins(response.data.adminUsers);
+          setAdmins(await response.data.adminUsers);
         }
       } catch (e) {
         if (e && e?.response && e?.response?.status === 400) {
