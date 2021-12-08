@@ -8,7 +8,7 @@ const ChartjsRadarChart = (props) => {
       let chats = adminUser.chats;
       const Visitors = chats.map((chat) => {
         return (
-          <span className="badge badge-info mr-1 mb-1">
+          <span className="badge badge-info mt-1 mb-1 ml-1">
             {chat.client.fullname}
           </span>
         );
@@ -16,7 +16,7 @@ const ChartjsRadarChart = (props) => {
       return (
         <>
           <tr>
-            <td style={{ maxHeight: "40px" }}>{Visitors}</td>
+            <td style={{ maxWidth: "50px" }}>{Visitors}</td>
             <td>
               <span>{adminUser.admin.fullname}</span>
             </td>
@@ -29,12 +29,12 @@ const ChartjsRadarChart = (props) => {
     });
   };
   return (
-    <Card>
+    <Card className="complete_table">
       <CardHeader className="d-flex justify-content-start align-items-sm-center align-items-start flex-sm-row flex-column">
         <CardTitle className="summary_heading">Chat History</CardTitle>
       </CardHeader>
       <CardBody>
-        <Table borderless responsive>
+        <Table border border-shadow responsive>
           <thead>
             <tr>
               <th>Clients</th>
