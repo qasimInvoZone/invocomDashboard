@@ -14,12 +14,12 @@ const Home = () => {
   }
   const socket = useContext(SocketContext);
 
-  const [leadsData, setleadsData] = useState({});
+  const [leadsData, setLeadsData] = useState({});
   const [username, setUsername] = useState("");
   const [role, setRole] = useState("");
   const [onlineUsers, setOnlineUser] = useState(0);
-  const [chatsData, setchatsData] = useState({});
-  const [meetingsData, setmeetingsData] = useState({});
+  const [chatsData, setChatsData] = useState({});
+  const [meetingsData, setMeetingsData] = useState({});
 
   useEffect(() => {
     socket.emit("getConnectedUsers");
@@ -45,9 +45,9 @@ const Home = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setleadsData(response.data);
-        setchatsData(response.data);
-        setmeetingsData(response.data);
+        setLeadsData(response.data);
+        setChatsData(response.data);
+        setMeetingsData(response.data);
       } catch (e) {
         console.log(e);
       }
@@ -60,7 +60,7 @@ const Home = () => {
       setUsername(user.username);
       setRole(user.role);
     }
-  }, [axios, setleadsData]);
+  }, [axios, setLeadsData]);
 
   return (
     <div>

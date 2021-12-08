@@ -24,10 +24,12 @@ const Meeting = () => {
         const response = await axios.get(endPoint,
         {
           headers: {
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           }
         })
-        setMeetingData(response.data);
+        console.log(await response.data);
+        setMeetingData(await response.data);
       } catch (e) {
         if (e && e?.response && e?.response?.status === 400) {
         }
@@ -37,20 +39,20 @@ const Meeting = () => {
   }, [axios, setMeetingData])
   return (
     <div className="p-2 bg-white mt-1" >
-    
+
     <h2 className='m-2'><strong>Meeting Overview</strong></h2>
-    
+
      <div className='mt-2'>
         <MeetingHeadCards meetingData={{
           totalMeetings: meetingData?.data?.totalMeetings,
           attendedMeetings: meetingData?.data?.attendedMeetings,
           unAttendedMeetings: meetingData?.data?.unAttendedMeetings,
           cancelledMeetings: meetingData?.data?.cancelledMeetings}}/>
-     </div>   
-    <div className="meet_card_head"> 
+     </div>
+    <div className="meet_card_head">
      <h2 className='m-2'> <strong>Meeting Schedule</strong></h2>
      <div className="meet_card_head_right">
-     
+
      </div>
     </div>
     <MeetCardSwiper meetingCard = {meetingData?.data?.meetings}/>
