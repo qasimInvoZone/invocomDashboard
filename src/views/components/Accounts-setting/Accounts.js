@@ -22,7 +22,7 @@ const Accounts = () => {
     },[errorMessage,password,confirmPassword])
     const updateUserPassword = async () => {
         if(password === confirmPassword && validate(password)){
-                
+
                 const entity = 'user'
                 const token = localStorage.getItem('token');
                 const endPoint = `${baseUrl}/${apiVersion}/${entity}/update-password `
@@ -44,7 +44,7 @@ const Accounts = () => {
         } else {
             setErrorMessage('Password do not match')
         }
-        
+
     }
     const updateUserNameAndEmail = async () => {
         if(emailError == ''){
@@ -71,7 +71,7 @@ const Accounts = () => {
         } else {
             setEmailError('Invalid Email');
         }
-        
+
     }
     const validateEmail = (e) => {
         let email = e.target.value
@@ -83,7 +83,7 @@ const Accounts = () => {
         }
       }
     const validate = (value) => {
-  
+
         if (value.length >= 8) {
             setErrorMessage('')
             return true;
@@ -93,7 +93,7 @@ const Accounts = () => {
         }
       }
     return (
-        
+
         <div className="Rightbar">
         <div className="rightbar_head">
             <div className="right_rightbar_head_child">
@@ -105,12 +105,12 @@ const Accounts = () => {
         </div>
 
         <div className="d-flex">
-         <div className="user_email_name"> 
+         <div className="user_email_name">
          <div className="rightbar_head">
             <div className="right_rightbar_head_child">
             <h4> Change Name & Email</h4>
             </div>
-        </div>  
+        </div>
             <div className="name-input-wrapper">
                 <div className="label-wrapper">Name</div>
                 <div><input type="text" placeholder="Usama" value={fullname} className="input-field" onChange={(e) => { setFullname(e.target.value) }}/></div>
@@ -126,19 +126,22 @@ const Accounts = () => {
           color: 'red',
         }}>{emailError}</span> : <span>{emailError}</span>}
             <button className="change-pass-btn" onClick={() => updateUserNameAndEmail()}>Save</button>
-            <div className="rightbar_head">
-            <div className="right_rightbar_head_child">
-            <h4> Change Password</h4>
             </div>
-        </div>
+            <div className="user_email_name">
+            <div className="rightbar_head">
+                <div className="right_rightbar_head_child">
+                    <h4> Change Password</h4>
+                </div>
+            </div>
             <div className="name-input-wrapper">
                 <div className="label-wrapper">Password</div>
                 <div><input type="password" placeholder="********" className="input-field" onChange={(e) => { setPassword(e.target.value) }}/></div>
             </div>
-            <br/>
-            <div className="name-input-wrapper">
+            <div className="email-input-wrapper">
                 <div className="label-wrapper">Confirm Password</div>
-                <div><input type="password" placeholder="********" className="input-field" onChange={(e) => { setConfirmPassword(e.target.value) }}/></div>
+                <div>
+                    <input type="password" placeholder="********" className="input-field" onChange={(e) => { setConfirmPassword(e.target.value) }}/>
+                </div>
             </div>
             {errorMessage != '' ? <span style={{
           fontWeight: 'bold',
@@ -149,9 +152,9 @@ const Accounts = () => {
             </div>
         </div>
 
-          
+
     </div>
-       
+
     )
 }
 
