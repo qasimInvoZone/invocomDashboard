@@ -17,6 +17,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
   const [user, setUser] = useState({});
   const [isAssigned, setIsAssigned] = useState(false);
   const [message, setMessage] = useState("");
+  const [chatRecordId, setChatRecordId] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [admins, setAdmins] = useState([]);
   const [showEmoji, setShowEmoji] = useState(false);
@@ -53,12 +54,10 @@ const ChatSection = ({ chat, sendMessageParent }) => {
           },
         }
       );
-      console.log(response);
       if (response.status == 200) {
         setIsAssigned(true);
+        setChatRecordId(response.data.chat._id);
       }
-
-      // eslint-disable-next-line no-undef
     } catch (error) {
       console.log(error);
     }
@@ -191,7 +190,7 @@ const ChatSection = ({ chat, sendMessageParent }) => {
               </div>
             )}
             {chat.STATUS != "CLOSED" ? (
-              chat.STATUS != "PENDING" || isAssigned ? (
+              chat.STATUS != "PENDING" || isAssigned  && (chatRecordId == chat._id) ? (
                 <div className="input_footer_emojis">
                   {showEmoji ? (
                     <div className="emoji_picker">
