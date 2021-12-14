@@ -21,7 +21,7 @@ const Home = () => {
   const socket = useContext(SocketContext);
 
   const [leadsData, setLeadsData] = useState({});
-  const [username, setUsername] = useState("");
+  const [fullname, setFullname] = useState("");
   const [role, setRole] = useState("");
   const [onlineUsers, setOnlineUser] = useState(0);
   const [chatsData, setChatsData] = useState({});
@@ -87,7 +87,7 @@ const Home = () => {
 
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
-      setUsername(user.username);
+      setFullname(user.fullname);
       setRole(user.role);
     }
   }, [axios, setLeadsData]);
@@ -95,7 +95,7 @@ const Home = () => {
   return (
     <div>
       <div className="welcome_note">
-        <h2>Hi, {username}</h2>
+        <h2>Hi, {fullname}</h2>
         <h5>Here's whats happening in your account</h5>
       </div>
       <Cards

@@ -684,7 +684,7 @@ mock.onGet('/api/users/list/data').reply(config => {
   const queryLowered = q.toLowerCase()
   const filteredData = data.users.filter(
     user =>
-      (user.username.toLowerCase().includes(queryLowered) || user.fullName.toLowerCase().includes(queryLowered)) &&
+      (user.fullName.toLowerCase().includes(queryLowered)) &&
       user.role === (role || user.role) &&
       user.currentPlan === (currentPlan || user.currentPlan) &&
       user.status === (status || user.status)

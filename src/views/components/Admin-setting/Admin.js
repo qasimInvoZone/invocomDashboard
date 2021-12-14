@@ -19,7 +19,7 @@ const Admin = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [admins, setAdmins] = useState([])
-    
+
     useEffect(() => {
       const fetchAdmins = async () => {
         const token = localStorage.getItem('token');
@@ -45,7 +45,7 @@ const Admin = () => {
     const handleCloseRemove = () => setShowRemove(false);
     const handleShowRemove = () => setShowRemove(true);
     const registerAdmin = async () => {
-      const token = localStorage.getItem('token');      
+      const token = localStorage.getItem('token');
       const baseUrl = process.env.REACT_APP_INVOCOM_API_URL
             const apiVersion = process.env.REACT_APP_INVOCOM_API_VERSION
             const entity = 'user'
@@ -60,7 +60,7 @@ const Admin = () => {
 
                 if (response.status === 200) {
                   setAdmins(prevAdmins => {
-                    return [...prevAdmins, {username: response.data.data.user.username, email: response.data.data.user.email, _id: response.data.data.user._id}]
+                    return [...prevAdmins, {fullname: response.data.data.user.fullname, email: response.data.data.user.email, _id: response.data.data.user._id}]
                   });
                 }
             } catch (e) {
@@ -74,7 +74,7 @@ const Admin = () => {
             <td className="table-div">{admin._id}</td>
             <td className="table-div">{admin.username}</td>
             <td className="table-div">{admin.email}</td>
-           
+
             <td className="table-div">
             <div className="d-flex align-items-center" style={{color:"grey"}} onClick={()=>{removeAdmin(admin.email)}}>
               <Trash2 size={16} className="" style={{marginRight:"5px",color:"grey"}}/>
@@ -118,7 +118,7 @@ const Admin = () => {
             <h3> Admin</h3>
             </div>
             <div>
-           
+
            <button onClick={handleShow} className="admin-btn"> <img className="mr-1 plus-icon" src={Plus} />Add an admin</button>
             </div>
         </div>
@@ -129,7 +129,7 @@ const Admin = () => {
         <th className="text-capitalize custom-wrapper">Name</th>
         <th className="text-capitalize custom-wrapper">Email</th>
         <th className="text-capitalize custom-wrapper">Changes</th>
-       
+
       </tr>
     </thead>
     <tbody>
@@ -158,7 +158,7 @@ const Admin = () => {
                <label style={{color:"#000",fontSize:"14px"}}>Enter Password</label>
                <input type="password"  name= "password" placeholder="password" className="input-field" onChange={(e) => { setPassword(e.target.value) }}/>
                </div>
-               
+
            </Modal.Body>
            <Modal.Footer className="mb-3 button-wrapper">
              <Button variant="outline-secondary"onClick={()=>{handleClose()}}>Discard</Button>
