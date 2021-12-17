@@ -25,7 +25,12 @@ const ModalForm = (props) => {
     try {
       const response = await axios.post(
         endPoint,
-        { adminId, chatId },
+        {
+          adminId,
+          chatId,
+          label: 'WARM',
+          source: "Chatbot"
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`,
