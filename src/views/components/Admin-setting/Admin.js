@@ -16,7 +16,6 @@ const Admin = () => {
     const [email, setEmail] = useState('')
     const [removeEmail, setremoveEmail] = useState('')
     const [fullname, setFullname] = useState('')
-    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [admins, setAdmins] = useState([])
 
@@ -52,7 +51,7 @@ const Admin = () => {
             const role = 'ADMIN'
             const endPoint = `${baseUrl}/${apiVersion}/${entity}/register/admin`
             try {
-                const response = await axios.post(endPoint, { username, fullname, email, role, password },{
+                const response = await axios.post(endPoint, { fullname, email, role, password },{
                   headers: {
                     Authorization: `Bearer ${token}`
                   }
@@ -72,7 +71,7 @@ const Admin = () => {
         return (
           <tr>
             <td className="table-div">{admin._id}</td>
-            <td className="table-div">{admin.username}</td>
+            <td className="table-div">{admin.fullname}</td>
             <td className="table-div">{admin.email}</td>
 
             <td className="table-div">
@@ -145,10 +144,6 @@ const Admin = () => {
               <div className="field-wrapper">
                <label className="" style={{color:"#000",fontSize:"14px"}}>Enter Name</label>
                <input type="text" name= "fullname" placeholder="Admin Name" className="input-field" onChange={(e) => { setFullname(e.target.value) }}/>
-               </div>
-               <div className="field-wrapper">
-               <label style={{color:"#000",fontSize:"14px"}}>Enter Username</label>
-               <input type="text" name= "username" placeholder="User Name" className="input-field" onChange={(e) => { setUsername(e.target.value) }}/>
                </div>
                <div className="field-wrapper">
                <label style={{color:"#000",fontSize:"14px"}}>Enter Email</label>
