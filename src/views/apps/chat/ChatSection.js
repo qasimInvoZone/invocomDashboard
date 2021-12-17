@@ -75,10 +75,6 @@ const ChatSection = ({ chat, sendMessageParent }) => {
     try {
       const response = await axios.get(endPoint,
         {
-          label: 'WARM',
-          source: "Chatbot"
-        },
-        {
         headers: {
           Authorization: `Bearer ${token}`,
         },
