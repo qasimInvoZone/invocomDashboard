@@ -73,7 +73,12 @@ const ChatSection = ({ chat, sendMessageParent }) => {
     const endPoint = `${baseUrl}/${apiVersion}/${entity}/admin`;
     const token = localStorage.getItem("token");
     try {
-      const response = await axios.get(endPoint, {
+      const response = await axios.get(endPoint,
+        {
+          label: 'WARM',
+          source: "Chatbot"
+        },
+        {
         headers: {
           Authorization: `Bearer ${token}`,
         },
